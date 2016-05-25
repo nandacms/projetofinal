@@ -3,6 +3,7 @@ var express = require('express');
 var app = express();
 
 var bodyParser = require('body-parser');
+//var session = require('express-session');
 
 //config o mongoose npm install mongoose
 var mongoose = require('mongoose');
@@ -16,6 +17,8 @@ mongoose.connect('mongodb://localhost/test', options);
 
 
 app.use(bodyParser.json());
+//app.use()
+
 app.use(express.static('public'));
 
 
@@ -73,6 +76,13 @@ app.put('/adicionarVenda', function (req, res) {
 	});
 });
 
+app.put('/adicionarCompra', function (req, res) {
+	usuarioServiceInstance.salvarCompra(req.body, function(response){
+		res.send(response);
+	}, function(err){
+		res.send(err);
+	});
+});
 
 //metodos do usuario aqui dentro  fim
 

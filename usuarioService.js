@@ -58,10 +58,10 @@ function UsuarioService(mongoose, appSchema){
 	
 	this.salvarVenda = function(obj_usuario, successCallback, errorCallback){
 
-		var vendas = obj_usuario.vendas;
+		var venda = obj_usuario.venda;
 
 		Usuario.update({_id: obj_usuario._id},
-		{$addToSet:{vendas:vendas}},function (err, data){
+		{$addToSet:{vendas:obj_usuario.venda}},function (err, data){
 						if (err) {
 
 							errorCallback(err);
@@ -76,7 +76,10 @@ function UsuarioService(mongoose, appSchema){
 	
 	this.salvarCompra= function(obj_usuario, successCallback, errorCallback){
 		
-		Usuario.update({_id: obj_usuario._id},{},function (err, data){
+		var compra = obj_usuario.compra;
+		
+		Usuario.update({_id: obj_usuario._id},
+		{$addToSet:{compras:obj_usuario.compra}},function (err, data){
 			if (err) errorCallback(err);
 
 			else successCallback(data);

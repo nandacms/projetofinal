@@ -22,7 +22,7 @@ function AppSchema(mongoose){
 	
 	var compra = {
 			
-		quantidade_compra:Number,
+		quantidadeCompra:Number,
 		valorCompra:Number,// por kg
 		status:String,
 		createdOn:{type: Date, default: Date.now},	
