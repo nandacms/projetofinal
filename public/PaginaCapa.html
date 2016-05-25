@@ -1,12 +1,16 @@
 <!DOCTYPE html>
-<html lang="en" ng-app = "">
+<html lang="en" ng-app = "myApp">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<script src=""></script>
-	<script src="js/"></script>
-	<script src="js/"></script> 
+	
+	<!--Esta ordem importa, primeiro a biblioteca -->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+	<!--Depois os serviços são declarados -->
+	<script src="js/myApp.js"></script>
+	<!--Depois o controller-->
+	<script src=""></script> 
 
     <title>Projeto Sucatão</title>
 
@@ -15,7 +19,7 @@
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-	 <link href="css/paginaUm.css"rel="stylesheet">
+	<link href="css/paginaUm.css"rel="stylesheet">
 
   </head>
   <body ng-controller = "">
