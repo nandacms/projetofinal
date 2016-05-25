@@ -30,9 +30,9 @@ var UsuarioService = require('./usuarioService.js').UsuarioService;
 var usuarioServiceInstance = 
 					new UsuarioService(mongoose, appSchemaInstance);
 
-var EstoqueService = require('./estoqueService.js').EstoqueService;
-var estoqueServiceInstance = 
-					new EstoqueService(mongoose, appSchemaInstance);
+var ProdutoService = require('./produtoService.js').ProdutoService;
+var produtoServiceInstance = 
+					new ProdutoService(mongoose, appSchemaInstance);
 
 
 
@@ -86,8 +86,44 @@ app.put('/adicionarCompra', function (req, res) {
 
 //metodos do usuario aqui dentro  fim
 
-//metodos do estoque aqui dentro inicio
-//metodos do estoque aqui dentro fim
+//metodos do produto aqui dentro inicio
+app.post('/salvarProduto', function (req, res) {
+	produtoServiceInstance.adicionarProduto(req.body, function(response){
+		res.send(response);
+	}, function(err){
+		res.send(err);
+	});
+});
+
+app.get('/getProdutos', function (req, res) {
+	produtoServiceInstance.listarProduto(req.body, function (response){
+		res.send(response);
+	}, function(err){
+		res.send(err);
+	});	
+});
+
+app.delete('/excluirProduto', function(req, res){
+	produtoServiceInstance.excluirProduto(req.body, function (response){
+		res.send(response);
+	}, function(err){
+		res.send(err);
+	});
+});
+
+app.put('/editarProduto', function(req,res){
+	produtoServiceInstance.alterarProduto(req.body, function (response){
+		res.send(response);
+	}, function(err){
+		res.send(err);
+	});
+});
+
+
+
+
+
+//metodos do produto aqui dentro fim
 
 //metodos da venda aqui dentro inicio
 //metodos da venda aqui dentro fim

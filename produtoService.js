@@ -16,7 +16,7 @@ function ProdutoService(mongoose, appSchema){
 	
 	
 	//listando todos os produtos do produto
-	this.listarProduto = function (obj_produto, successCallback, errorCallback){
+	this.listarProdutos = function (obj_produto, successCallback, errorCallback){
 		Produto.find({}, function(err,data){
 			if (err) errorCallback(err);
 			else successCallback(data);
