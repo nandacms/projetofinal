@@ -1,9 +1,8 @@
 //importar biblioteca do express
 var express = require('express');
 var app = express();
-
 var bodyParser = require('body-parser');
-//var session = require('express-session');
+var session = require('express-session');
 
 //config o mongoose npm install mongoose
 var mongoose = require('mongoose');
@@ -17,9 +16,12 @@ mongoose.connect('mongodb://localhost/test', options);
 
 
 app.use(bodyParser.json());
-//app.use()
-
+app.use(session({ secret: 'mypass', 
+	saveUninitialized: false,
+	resave: false,				
+	cookie: { maxAge: 60000 }}));
 app.use(express.static('public'));
+
 
 
 
@@ -37,6 +39,20 @@ var produtoServiceInstance =
 
 
 //Chamar os metodos aqui em baixo
+
+//metodos da sessao
+app.get('/sessaoAdicionar/:id/:login/:senha', function (req, res) {
+
+	req.session.usuario = {_id: req.params.id, login:req.params.login, senha:req.params.senha};
+	
+	res.send(req.session.usuario);
+});
+
+app.get('/sessaoConsultar', function (req, res) {
+	res.send(req.session.usuario);
+});
+
+
 //metodos do usuario aqui dentro inicio
 app.post('/adicionarUsuario', function (req, res) {
 	usuarioServiceInstance.salvarUsuario(req.body, function(response){
@@ -68,21 +84,15 @@ app.get('/getUsuarios', function (req, res) {
 	});
 });
 
-app.put('/adicionarVenda', function (req, res) {
-	usuarioServiceInstance.salvarVenda(req.body, function(response){
+
+app.get('/verificarLoginUsuario/:login/:senha', function (req, res) {
+	usuarioServiceInstance.verificarLoginUsuario(req.params.login, req.params.senha, function(response){
 		res.send(response);
 	}, function(err){
 		res.send(err);
 	});
 });
 
-app.put('/adicionarCompra', function (req, res) {
-	usuarioServiceInstance.salvarCompra(req.body, function(response){
-		res.send(response);
-	}, function(err){
-		res.send(err);
-	});
-});
 
 //metodos do usuario aqui dentro  fim
 
@@ -126,9 +136,27 @@ app.put('/editarProduto', function(req,res){
 //metodos do produto aqui dentro fim
 
 //metodos da venda aqui dentro inicio
+
+app.put('/adicionarVenda', function (req, res) {
+	usuarioServiceInstance.salvarVenda(req.body, function(response){
+		res.send(response);
+	}, function(err){
+		res.send(err);
+	});
+});
+
 //metodos da venda aqui dentro fim
 
 //metodos da compra aqui dentro inicio
+
+app.put('/adicionarCompra', function (req, res) {
+	usuarioServiceInstance.salvarCompra(req.body, function(response){
+		res.send(response);
+	}, function(err){
+		res.send(err);
+	});
+});
+
 //metodos da compra aqui dentro fim
 
 

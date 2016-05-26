@@ -49,7 +49,7 @@ function AppSchema(mongoose){
 
 	});
 
-	this.estoqueSchema = new Schema(
+	this.produtoSchema = new Schema(
 
 
 		produto
