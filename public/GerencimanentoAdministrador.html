@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="">
+<html lang="en" ng-app= "myApp" >
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<script src=".js"></script>
-	<script src="js/"></script>
-	<script src="js/"></script> 
+	<script src="js/angular.min.js"></script>
+	<script src="js/myApp.js"></script>
+	<script src="js/myContrl.js"></script> 
 
     <title>Projeto Sucatão</title>
 
@@ -18,14 +18,15 @@
 	 <link href="css/paginaUm.css"rel="stylesheet">
 
   </head>
-  <body ng-controller= "">
+  <body ng-controller= "myContrl">
 
     <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
-			<div class="page-header">
+			<div class="page-header cabecalho">
 				<h1>
-					My Recicle
+					<img src= "logo.jpg" alt="logo" title= "logotipo"
+			     width="100" align= left/>	My Recycle
 				</h1>
 			</div>
 		</div>
@@ -33,10 +34,10 @@
 	<div class="row">
 		<div class="col-md-2 lateral5">
 		
-		    <li><a href="PaginaCapa.html">Home</a></li><br/>
-            <li><a href="PaginaTres.html">Compras</a></li><br/>
-			<li><a href="PaginaQuatro.html">Vendas</a></li><br/>
-            <li><a href="PaginaCinco">Consulte seu histórico</a></li>
+		      <li><a href="Index.html">Home</a></li> <br/>
+            <li><a href="Compra.html">Compras</a></li><br/>
+			<li><a href="Venda.html">Vendas</a></li><br/>
+            <li><a href="Consulta.html">Consulte seu histórico</a></li>
 		</div>
 		<div class="col-md-8 centro5">
 		
@@ -45,7 +46,20 @@
 		<br/>
 		<br/>
 		<br/>
-
+		<form class="form-horizontal" role="form">
+				<div class="form-group">
+					 
+					<label for="inputnome3" class="col-sm-2 control-label">
+						Digite o CPF/CNPJ do Cliente:
+					</label>
+					
+					<div class="col-sm-10">
+						<input type="id" class="form-control" id="inputId3" onkeypress='return event.charCode>= 48&& event.charCode<=57'></input>
+						(Insira apenas números)
+					</div>
+				</div>
+				<br/>
+				<br/>
 		<table class="table table-striped">
 				<thead>
 					<tr>
@@ -98,7 +112,7 @@
 		<div class="col-md-12 rodape " align ="center">
 			 <h5>
 			<address>
-				 <strong><em>My Recicle</strong><br> Av. Recife-600<br> Recife-PE<br> <abbr title="Phone">Telefone:</abbr> (81)3456-7890 </em>
+				 <strong><em>My Recycle</strong><br> Av. Recife-600<br> Recife-PE<br> <abbr title="Phone">Telefone:</abbr> (81)3456-7890 </em>
 			</address>
 			</h5>
 		</div>

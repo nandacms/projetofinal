@@ -4,13 +4,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	
-	<!--Esta ordem importa, primeiro a biblioteca -->
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
-	<!--Depois os serviços são declarados -->
+	<script src="js/angular.min.js"></script>
 	<script src="js/myApp.js"></script>
-	<!--Depois o controller-->
-	<script src=""></script> 
+	<script src="js/myContrl.js"></script> 
 
     <title>Projeto Sucatão</title>
 
@@ -19,17 +15,18 @@
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-	<link href="css/paginaUm.css"rel="stylesheet">
+	 <link href="css/paginaUm.css"rel="stylesheet">
 
   </head>
-  <body ng-controller = "">
+  <body ng-controller = "myContrl">
 
     <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
-			<div class="page-header">
-				<h1>
-					My Recycle
+			<div class="page-header cabecalho">
+				<h1 font-color="#A0522D">
+				<img src= "logo.jpg" alt="logo" title= "logotipo"
+			     width="100" align= left/>	My Recycle
 				</h1>
 			</div>
 		</div>
@@ -37,28 +34,35 @@
 	<div class="row">
 		<div class="col-md-2 lateral5">
 		
-		      <li><a href="PaginaUm.html">Login</a></li> <br/>
-            <li><a href="PaginaTres.html">Compras</a></li><br/>
-			<li><a href="PaginaQuatro.html">Vendas</a></li><br/>
-            <li><a href="PaginaCinco.html">Consulte seu histórico</a></li>
+		      <li><a href="Login.html">Login</a></li> <br/>
+            <li><a href="Compra.html">Compras</a></li><br/>
+			<li><a href="Venda.html">Vendas</a></li><br/>
+           	
 		</div>
 		<div class="col-md-8 centro5">
 		
-		<h3> Home</h3>
+		<h3> Home </h3>
 		___________________________________________________________________________________________________________________
 		<br/>
-		<br/>
-		<br/>
-
-	  
-		<div class="col-md-2">
-		</div>
+	
+	  </div>
+<div class="col-md-2 centro5">
+<img src= "vidro.jpg" alt="vidr" title= "vd"
+			     width="150" align= left/>
+			     <img src= "metal.jpg" alt="metal" title= "metal1"
+			     width="150" align=right/>	
+	    <img src= "plástico.jpg" alt="pls" title= "pls"
+	    width="150" align= right/>	
+	    
+	 <img src= "papel.jpg" alt="pp" title= "ppl"
+			     width="150" align= right/>	
+</div>		
 	</div>
 	<div class="row">
 		<div class="col-md-12 rodape " align ="center">
 			 <h5>
 			<address>
-				 <strong><em>My Recicle</strong><br> Av. Recife-600<br> Recife-PE<br> <abbr title="Phone">Telefone:</abbr> (81)3456-7890 </em>
+				 <strong><em>My Recycle</strong><br> Av. Recife-600<br> Recife-PE<br> <abbr title="Phone">Telefone:</abbr> (81)3456-7890 </em>
 			</address>
 			</h5>
 		</div>

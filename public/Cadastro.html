@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" ng-app= "" >
+<html lang="en" ng-app= "myApp" >
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<script src=""></script>
-	<script src="js/"></script>
-	<script src="js/"></script> 
+	<script src="js/angular.min.js"></script>
+	<script src="js/myApp.js"></script>
+	<script src="js/myContrl.js"></script> 
 
     <title>Projeto Sucatão</title>
 
@@ -19,16 +19,15 @@
 	
 
   </head>
-  
-  <!--Falta descer o rodape e afastar o campo endereco de cidade -->
-  <body ng-controller = "">
+  <body ng-controller = "myContrl">
 
     <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
-			<div class="page-header">
+			<div class="page-header cabecalho">
 				<h1>
-					My Recicle
+					<img src= "logo.jpg" alt="logo" title= "logotipo"
+			     width="100" align= left/>	My Recycle
 				</h1>
 			</div>
 		</div>
@@ -37,9 +36,9 @@
 		<div class="col-md-2 lateral2">
 		
 		    
-            <li><a href="PaginaTres.html">Compras</a></li><br/>
-			<li><a href="PaginaQuatro.html">Vendas</a></li><br/>
-            <li><a href="PaginaCinco.html">Consulte seu histórico</a></li>
+            <li><a href="Compras.html">Compras</a></li><br/>
+			<li><a href="Vendas.html">Vendas</a></li><br/>
+            <li><a href="Consulta.html">Consulte seu histórico</a></li>
 		</div>
 		<div class="row">
 		<div class="col-md-8 centro">
@@ -131,7 +130,7 @@
 		<div class="col-md-12 rodape2 " align ="center">
 			 <h5>
 			<address>
-				 <strong><em>My Recicle </strong><br> Av. Recife-600<br> Recife-PE<br> <abbr title="Phone">Telefone:</abbr> (81)3456-7890 </em>
+				 <strong><em>My Recycle </strong><br> Av. Recife-600<br> Recife-PE<br> <abbr title="Phone">Telefone:</abbr> (81)3456-7890 </em>
 			</address>
 			</h5>
 		</div>
