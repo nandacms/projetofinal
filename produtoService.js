@@ -33,17 +33,21 @@ function ProdutoService(mongoose, appSchema){
 	}
 	
 	this.alterarProduto = function (obj_produto, successCallback, errorCallback){
-		Produto.update({_id: obj_produto.id},
-				{$set: {nome_produto: obj_produto.nome_produto, 
-						descricao: obj_produto.descricao,
-						preco_produto: obj_produto.preco_produto ,
-						quantidade_estoque: obj_produto.quantidade_estoque}},
+		console.log(obj_produto);
+		Produto.update({_id: obj_produto._id},
+				{$set: {descricao: obj_produto.descricao,
+					precoProduto: obj_produto.precoProduto ,
+					quantidadeEstoque: obj_produto.quantidadeEstoque}},
 						function(err,data){
+						
 							if (err) errorCallback(err);
 							else successCallback(data);
 						});		
 	}	
+}		
+
+
+
 		
-}
 
 module.exports.ProdutoService = ProdutoService;
