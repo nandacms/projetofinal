@@ -19,7 +19,7 @@ app.use(bodyParser.json());
 app.use(session({ secret: 'mypass', 
 	saveUninitialized: false,
 	resave: false,				
-	cookie: { maxAge: 60000 }}));
+	cookie: { maxAge: 1000 * 60 * 60 }}));
 app.use(express.static('public'));
 
 
