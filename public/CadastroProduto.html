@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="js/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/angular.min.js"></script>
+		<script src="js/myApp.js"></script>
+		<script src="js/produtoController.js"></script>
+
+	<title>My Recycle</title>
+
+
+	<meta name="description"
+	content="Source code generated using layoutit.com">
+	<meta name="author" content="LayoutIt!">
+
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/style.css" rel="stylesheet">
+	<link href="css/paginaUm.css" rel="stylesheet">
+
+
+	</head>
+	<body ng-controller="produtoController">
+
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="page-header cabecalho">
+						<h1>
+							<img src="images/logo.jpg" alt="logo" title="logotipo" width="100"align=left /> My Recycle
+						</h1>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-2 lateral">
+
+					<li><a href="Index.html">Home</a></li> <br />
+					<li><a href="Venda.html">Vendas</a></li> <br />
+					<li><a href="Consulta.html">Consulte seu histórico</a></li>
+				</div>
+				
+				<div class="col-md-8 centro">
+
+					<form class="formulario" role="form">
+	
+						<div class="form-group">
+							<label class="control-label">
+								 Informe os dados do produto que deja cadastrar:
+							 </label>
+						 </div>
+						<div class="form-group">
+					 
+							<label for="inputnome3" class="col-sm-2 control-label">
+								Descricao do Produto:
+							</label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" id="inputId3" ng-model="descricao"><br/>
+							</div>
+						</div>
+						<div class="form-group">	
+							<label for="inputnome3" class="col-sm-2 control-label">
+								Valor do Produto:
+							</label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" id="inputId3" ng-model="precoProduto"><br/>
+							</div>
+						</div>	
+						<div class="form-group">	
+							<label for="inputnome3" class="col-sm-2 control-label">
+								valor adicionado no estoque:
+							</label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" id="inputId3" ng-model="quantidadeEstoque"><br/>
+							</div>
+						</div>
+							
+					</form>	
+					<div>
+						<input align="center" type="button" value="Cadastrar Novo Produto" ng-click="adicionarProduto()" /><br/><br/>
+					</div>
+					<div>
+					
+						<table class="table">
+							<thead>
+								<tr>
+									<th>Produto</th>
+									<th>Valor do Produto (Por Kg)</th>
+									<th>Quantidade no estoque</th>
+									<th>Deletar Produto</th>
+									
+								</tr>
+							</thead>
+							<tbody ng-repeat="produto in listaProdutos">
+								<tr >
+									<td>{{produto.descricao}}</td>
+									<td>R$ {{produto.precoProduto}}</td>
+									<td>{{produto.quantidadeEstoque}}</td>
+									<td><input type="button" class="btn btn-default" value="Remover" ng-click="deletarProduto(produto._id)" /></td>
+								</tr>
+							</tbody>
+						</table>				
+					</div>
+				</div>
+
+				<div class="col-md-2"></div>
+
+				<div class="row">
+					<div class="col-md-12 rodape" align="center">
+						<h5>
+							<address>
+								<strong><em>My Recycle </strong><br> Av. Recife-600<br>
+								Recife-PE<br> <abbr title="Phone">Telefone:</abbr>
+								(81)3456-7890 </em>
+							</address>
+						</h5>
+					</div>
+				</div>
+			</div>	
+	</body>
+</html>

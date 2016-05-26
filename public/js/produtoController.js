@@ -9,7 +9,8 @@ app.controller("produtoController", function($scope,$http) {
 
 			//um objeto produto com as caracteristicas descricao...
 			var produto = {descricao: $scope.descricao,
-							precoProduto:$scope.quantidadeEstoque};
+							precoProduto:$scope.precoProduto,
+							quantidadeEstoque:$scope.quantidadeEstoque};
 			//adicionarUsuario e a url existente no JSON, contato e o nome da minha variavel
 			$http.post("/salvarProduto",produto,{
 				headers:{'contente-Type':'application/json'}
@@ -58,11 +59,12 @@ app.controller("produtoController", function($scope,$http) {
 		
 		
 		$scope.deletarProduto = function(id){
+			
 			$http.delete("/excluirProduto/"+id)
 			
 			.then(
 					function(response){
-						$scope.carregarListaContatos();
+						$scope.listaProduto();
 					},
 					function(response){
 						alert(response.data);
