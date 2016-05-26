@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<script src="js/angular.min.js"></script>
 	<script src="js/myApp.js"></script>
-	<script src="js/myContrl.js"></script> 
+	<script src="js/vendaController.js"></script> 
     <title>My Recycle - Venda</title>
 
     <meta name="description" content="Source code generated using layoutit.com">
@@ -18,7 +18,7 @@
 	
 
   </head>
-  <body ng-controller= "myContrl">
+  <body ng-controller= "vendaController">
   <div class="container-fluid">
 		<div class="row">
 		<div class="col-md-12">
@@ -42,26 +42,62 @@
 		
 			<form class="form-horizontal" role="form">
 				<div class="form-group">
-					 
-					<label for="inputnome3" class="col-sm-2 control-label">
-						Produto:
-					</label>
-					<div class="col-sm-10">
-						<input type="id" class="form-control" id="inputId3">
-					</div>
+					 <label class="control-label">
+							Produtos Disponíveis: </label>
+							<table class="table">
+								<thead>
+									<tr>
+										<th>Produto</th>
+										<th>Quantidade Disponível</th>
+										<th>Valor do Produto (Por Kg)</th>
+<!-- 										<th>Quanto deseja comprar</th>
+ -->										<th></th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="produtos in listaProdutos">
+										<td>{{produtos.descricao}}</td>
+										<td>{{produtos.quantidadeEstoque}} Kg</td>
+										<td>R$ {{produtos.precoProduto}}</td>
+										<!-- <td><input type="number" class="form-control" ng-model="qntdEscolhida" /></td> -->
+										<td><input type="button" class="btn btn-default" value="Adicionar" ng-click="adicionarProdutosEscolhidos(produtos)" /></td>
+										
+									</tr>
+								</tbody>
+							</table>
+							
+							<br/>
+							<br/>
+							
+						 <label class="control-label">
+							Produtos Selecionados para Venda: </label>
+							<br/>
+							<br/>
+							<table class="table">
+								<thead>
+									<tr>
+										<th>Produto</th>
+										<th>Quantidade Disponível</th>
+										<th>Valor do Produto (Por Kg)</th>
+										<th>Quanto deseja comprar</th>
+										<th></th>
+									</tr>
+								</thead>
+								<tbody ng-repeat="produtoEscolhido in produtosEscolhidos">
+									<tr>
+										<td>{{produtoEscolhido.descricao}}</td>
+										<td>{{produtoEscolhido.quantidadeEstoque}} Kg</td>
+										<td>R$ {{produtoEscolhido.precoProduto}}</td>
+										<td><input type="number" class="form-control" ng-model="qntdEscolhida" /></td>
+										<td><input type="button" class="btn btn-default" value="Apagar" ng-click="deletarProdutoEscolhido()" /></td>
+									</tr>
+								</tbody>
+							</table>
 				</div>
 				<br/>
 				
 					
-				 <div class="form-group">
-					 
-					<label for="inputnome3" class="col-sm-2 control-label">
-						Quantidade para venda:
-					</label>
-					<div class="col-sm-10">
-						<input type="id" class="form-control" id="inputId3">
-					</div>
-				</div>
+				
 				<br/>
 				
 					<div class="form-group">
@@ -99,6 +135,6 @@
 
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/scripts.js"></script>
+    <!-- <script src="js/scripts.js"></script> -->
   </body>
 </html>
