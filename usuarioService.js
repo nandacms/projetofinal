@@ -42,15 +42,6 @@ function UsuarioService(mongoose, appSchema){
 	}
 
 	this.alterarUsuario = function(obj_usuario, successCallback, errorCallback){
-
-//		var query;
-//		if(obj_usuario.cnpj == null || obj_usuario.cnpj == "" ){
-//			obj_usuario.cnpj = "";
-//		}else{
-//			
-//			obj_usuario.cpf = "";
-//		}
-
 		
 		
 		Usuario.update({_id:obj_usuario._id},

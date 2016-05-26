@@ -41,9 +41,10 @@ var produtoServiceInstance =
 //Chamar os metodos aqui em baixo
 
 //metodos da sessao
-app.get('/sessaoAdicionar/:id/:login/:senha', function (req, res) {
-
-	req.session.usuario = {_id: req.params.id, login:req.params.login, senha:req.params.senha};
+app.get('/sessaoAdicionar/:id', function (req, res) {
+	///:login/:senha
+	req.session.usuario = {_id: req.params.id};
+	//, login:req.params.login, senha:req.params.senha
 	
 	res.send(req.session.usuario);
 });
@@ -119,8 +120,8 @@ app.get('/getProdutos', function (req, res) {
 	});	
 });
 
-app.delete('/excluirProduto', function(req, res){
-	produtoServiceInstance.excluirProduto(req.body, function (response){
+app.delete('/excluirProduto/:produto_id', function(req, res){
+	produtoServiceInstance.excluirProduto(req.params.produto_id, function (response){
 		res.send(response);
 	}, function(err){
 		res.send(err);
