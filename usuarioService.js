@@ -10,6 +10,14 @@ function UsuarioService(mongoose, appSchema){
 			else successCallback(data);
 		});	
 	}
+	this.listarUsuarioId = function(id_usuario, successCallback, errorCallback){
+
+		Usuario.find({_id:id_usuario },function (err, data){
+			if (err) errorCallback(err);
+
+			else successCallback(data);
+		});	
+	}
 	
 	this.verificarLoginUsuario = function(login,senha, successCallback, errorCallback){
 			

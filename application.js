@@ -12,7 +12,7 @@ var options = {
 
 }
 
-mongoose.connect('mongodb://localhost/test', options);
+mongoose.connect('mongodb://10.42.3.233/test', options);
 
 
 app.use(bodyParser.json());
@@ -84,7 +84,13 @@ app.get('/getUsuarios', function (req, res) {
 	});
 });
 
-
+app.get('/getUsuariosId/:id_usuario', function (req, res) {
+	usuarioServiceInstance.listarUsuarioId(req.params.id_usuario, function(response){
+		res.send(response);
+	}, function(err){
+		res.send(err);
+	});
+});
 app.get('/verificarLoginUsuario/:login/:senha', function (req, res) {
 	usuarioServiceInstance.verificarLoginUsuario(req.params.login, req.params.senha, function(response){
 		res.send(response);
