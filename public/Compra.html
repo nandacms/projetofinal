@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" ng-app= "myApp" >
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="js/angular.min.js"></script>
+	<script src="js/myApp.js"></script>
+	<script src="js/myContrl.js"></script> 
+
+    <title>Projeto Sucatão</title>
+
+    <meta name="description" content="Source code generated using layoutit.com">
+    <meta name="author" content="LayoutIt!">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+	 <link href="css/paginaUm.css"rel="stylesheet">
+	 
+
+  </head>
+  <body ng-controller= "myContrl">
+
+  <div class="container-fluid">
+		<div class="row">
+		<div class="col-md-12">
+			<div class="page-header cabecalho">
+				<h1>
+					<img src= "logo.jpg" alt="logo" title= "logotipo"
+			     width="100" align= left/>	My Recycle
+				</h1>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-2 lateral">
+		
+		    <li><a href="Index.html">Home</a></li> <br/>
+            <li><a href="Venda.html">Vendas</a></li><br/>
+            <li><a href="Consulta.html">Consulte seu histórico</a></li>
+		</div>
+		
+		<div class="col-md-8 centro">
+		
+			<form class="form-horizontal" role="form">
+				<div class="form-group">
+					 
+					<label for="inputnome3" class="col-sm-2 control-label">
+						Produto:
+					</label>
+					<div class="col-sm-10">
+						<input type="id" class="form-control" id="inputId3">
+					</div>
+				</div>
+				<br/>
+				
+					<div class="form-group">
+					 
+					<label for="inputnome3" class="col-sm-2 control-label">
+						Quantidade Disponivel:
+					</label>
+					<div class="col-sm-10">
+						<input type="id" class="form-control" id="inputId3">
+					</div>
+				</div>
+				<br/>
+				
+				 <div class="form-group">
+					 
+					<label for="inputnome3" class="col-sm-2 control-label">
+						Quanto Deseja Comprar?
+					</label>
+					<div class="col-sm-10">
+						<input type="id" class="form-control" id="inputId3">
+					</div>
+				</div>
+				<br/>
+				
+					<div class="form-group">
+					 
+					<label for="inputnome3" class="col-sm-2 control-label">
+						Valor da Compra:
+					</label>
+					<div class="col-sm-10">
+						<input type="id" class="form-control" id="inputId3">
+					</div>
+				</div>
+				
+		    </form>
+			  <input  align="center" type="button" value="Efetuar Compra" ng-click="cadastrarCliente()"/>	
+		</div>
+					 
+				
+					
+	</div>
+	      
+	<div class="col-md-2">
+		</div>
+	
+	<div class="row">
+		<div class="col-md-12 rodape " align ="center">
+			 <h5>
+			<address>
+				 <strong><em>My Recycle </strong><br> Av. Recife-600<br> Recife-PE<br> <abbr title="Phone">Telefone:</abbr> (81)3456-7890 </em>
+			</address>
+			</h5>
+		</div>
+	</div>
+</div>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/scripts.js"></script>
+  </body>
+</html>
