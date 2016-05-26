@@ -112,7 +112,7 @@ app.post('/salvarProduto', function (req, res) {
 });
 
 app.get('/getProdutos', function (req, res) {
-	produtoServiceInstance.listarProduto(req.body, function (response){
+	produtoServiceInstance.listarProdutos(req.body, function (response){
 		res.send(response);
 	}, function(err){
 		res.send(err);
