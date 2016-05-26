@@ -9,7 +9,7 @@
 }
 
 h1 {
-margin-left: 300px
+margin-left: 20px
 }
 
 .centro{
@@ -17,9 +17,6 @@ margin-left: 300px
 }
 
 
-.centro5{
-	margin-top:30px
-}
 
 
 h5 {
@@ -30,3 +27,14 @@ h5 {
 .lateral5{
 	margin-top:50px
 	}
+.lateralanuncio {
+	margin-top: 30px
+}
+
+.cabecalho{
+	margin-left:  170px
+}
+
+h1{
+	font-text:"#A0522D"
+}
