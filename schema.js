@@ -33,8 +33,7 @@ function AppSchema(mongoose){
 	this.usuarioSchema = new Schema({
 		// dados do usuario
 		nomeUsuario: String,
-		cpf: String,
-		cnpj:String,
+		login: String,
 		tipo:String,// se é pessoa fisica pf- cpf ou juridica pj- cnpj e se o
 					// usuario é um ADIMINISTRADOR - adm
 		senha:String,

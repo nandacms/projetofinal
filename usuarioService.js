@@ -13,22 +13,14 @@ function UsuarioService(mongoose, appSchema){
 	
 	this.verificarLoginUsuario = function(login,senha, successCallback, errorCallback){
 			
-		if(login.length == 14){
+		
 			
-		Usuario.find({cnpj:login,senha:senha},function (err, data){
+		Usuario.find({login:login,senha:senha},function (err, data){
 			if (err) errorCallback(err);
 
 			else successCallback(data);
 		});	
-		}else{
-			Usuario.find({cpf:login,senha:senha },function (err, data){
-				if (err) errorCallback(err);
 
-				else successCallback(data);
-			});
-			
-			
-		}
 	}
 
 	this.salvarUsuario = function(obj_usuario, successCallback, errorCallback){
@@ -44,17 +36,17 @@ function UsuarioService(mongoose, appSchema){
 	this.alterarUsuario = function(obj_usuario, successCallback, errorCallback){
 
 //		var query;
-		if(obj_usuario.cnpj == null || obj_usuario.cnpj == "" ){
-			obj_usuario.cnpj = "";
-		}else{
-			
-			obj_usuario.cpf = "";
-		}
+//		if(obj_usuario.cnpj == null || obj_usuario.cnpj == "" ){
+//			obj_usuario.cnpj = "";
+//		}else{
+//			
+//			obj_usuario.cpf = "";
+//		}
 
 		
 		
 		Usuario.update({_id:obj_usuario._id},
-				{$set:{nomeUsuario: obj_usuario.nomeUsuario, cpf:obj_usuario.cpf, cnpj:obj_usuario.cnpj, senha:obj_usuario.senha,
+				{$set:{nomeUsuario: obj_usuario.nomeUsuario,login:obj_usuario.cnpj, senha:obj_usuario.senha,
 					endereco:{cidade:obj_usuario.endereco.cidade, estado: obj_usuario.endereco.estado, 
 					cep: obj_usuario.endereco.cep, complemento: obj_usuario.endereco.complemento},
 					telefone:{residencial: obj_usuario.telefone.residencial, celular: obj_usuario.telefone.celular }
