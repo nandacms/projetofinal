@@ -46,7 +46,7 @@ function UsuarioService(mongoose, appSchema){
 		
 		
 		Usuario.update({_id:obj_usuario._id},
-				{$set:{nomeUsuario: obj_usuario.nomeUsuario,login:obj_usuario.cnpj, senha:obj_usuario.senha,
+				{$set:{nomeUsuario: obj_usuario.nomeUsuario,login:obj_usuario.login, senha:obj_usuario.senha,
 					endereco:{cidade:obj_usuario.endereco.cidade, estado: obj_usuario.endereco.estado, 
 					cep: obj_usuario.endereco.cep, complemento: obj_usuario.endereco.complemento},
 					telefone:{residencial: obj_usuario.telefone.residencial, celular: obj_usuario.telefone.celular }
