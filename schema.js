@@ -7,8 +7,8 @@ function AppSchema(mongoose){
 		descricao: String,
 		precoProduto:Number,
 		quantidadeEstoque: Number,
-
-		createdOn:{type: Date, default: Date.now}
+		createdOn:{type: Date, default: Date.now},
+		qntdEscolhida: Number
 
 	};
 
