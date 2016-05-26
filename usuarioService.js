@@ -10,6 +10,26 @@ function UsuarioService(mongoose, appSchema){
 			else successCallback(data);
 		});	
 	}
+	
+	this.verificarLoginUsuario = function(login,senha, successCallback, errorCallback){
+			
+		if(login.length == 14){
+			
+		Usuario.find({cnpj:login,senha:senha},function (err, data){
+			if (err) errorCallback(err);
+
+			else successCallback(data);
+		});	
+		}else{
+			Usuario.find({cpf:login,senha:senha },function (err, data){
+				if (err) errorCallback(err);
+
+				else successCallback(data);
+			});
+			
+			
+		}
+	}
 
 	this.salvarUsuario = function(obj_usuario, successCallback, errorCallback){
 		var usuarioSave = new Usuario(obj_usuario);
@@ -56,6 +76,10 @@ function UsuarioService(mongoose, appSchema){
 		});	
 	}
 	
+	
+	
+	
+	
 	this.salvarVenda = function(obj_usuario, successCallback, errorCallback){
 
 		var venda = obj_usuario.venda;
@@ -85,6 +109,9 @@ function UsuarioService(mongoose, appSchema){
 			else successCallback(data);
 		});	
 	}
+	
+	
+	
 	
 	
 }
