@@ -15,17 +15,35 @@
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+    <link href="css/simple-sidebar.css" rel="stylesheet">
 	 <link href="css/paginaUm.css"rel="stylesheet">
 
   </head>
   <body ng-controller= "myContrl">
 
     <div class="container-fluid">
+     <div id="wrapper">
+			<div id="sidebar-wrapper">
+				<ul class="sidebar-nav">
+					<li class="sidebar-brand"><a href="#">  My Recycle </a></li>
+					<li><a href="Index.html">Home</a></li>
+					<li><a href="" ng-click="compra()">Compras</a></li>
+					<li><a href="" ng-click="venda()">Vendas</a></li>
+					<li><a href="" ng-click="consulta()">Consulte seu
+							histórico</a></li>
+					<li><a href="" ng-click="alterarDadosUsuario()">Alterar
+							Dados do Usuario</a></li>
+				</ul>
+			</div>
+			<div id="page-content-wrapper">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-lg-12">
 	<div class="row">
 		<div class="col-md-12">
 			<div class="page-header cabecalho">
 				<h1>
-					<img src= "logo.jpg" alt="logo" title= "logotipo"
+					<img src= "images/logo.jpg" alt="logo" title= "logotipo"
 			     width="100" align= left/>	My Recycle
 				</h1>
 			</div>
@@ -34,20 +52,17 @@
 	<div class="row">
 		<div class="col-md-2 lateral5">
 		
-		    <li><a href="Index.html">Home</a></li><br/>
-            <li><a href="Compra.html">Compras</a></li><br/>
-			<li><a href="Venda.html">Vendas</a></li><br/>
-            
 		</div>
-		<div class="col-md-8 centro5">
+		<div class="col-md-8 centro5" align="center">
 		
-		<h3> Consulta de Histórico</h3>
-		___________________________________________________________________________________________________________________
+		<h2 align="center"> Consulta de Histórico
+		________________________________________________</h2>
 		<br/>
+		
 		<br/>
 		<br/>
 
-		<table class="table table-striped">
+		<table class="table table-striped" align="center">
 				<thead>
 					<tr>
 						<th>
@@ -99,6 +114,7 @@
 		<div class="col-md-12 rodape " align ="center">
 			 <h5>
 			<address>
+			____________________________________________________________________________________<br/>
 				 <strong><em>My Recycle</strong><br> Av. Recife-600<br> Recife-PE<br> <abbr title="Phone">Telefone:</abbr> (81)3456-7890 </em>
 			</address>
 			</h5>

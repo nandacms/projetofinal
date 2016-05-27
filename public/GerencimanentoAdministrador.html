@@ -15,18 +15,31 @@
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+    <link href="css/simple-sidebar.css" rel="stylesheet">
 	 <link href="css/paginaUm.css"rel="stylesheet">
 
   </head>
   <body ng-controller= "myContrl">
 
     <div class="container-fluid">
+    <div id="wrapper">
+			<div id="sidebar-wrapper">
+				<ul class="sidebar-nav">
+					<li class="sidebar-brand"><a href="#"> My Recycle </a></li>
+					<li><a href="InicialAdm.html">Home Page</a></li>
+					<li><a href="" ng-click="compra()">Cadastrar Produtos</a></li>
+					<li><a href="" ng-click="venda()">Gerenciar Transações</a></li>
+
+				</ul>
+			</div>
+			<div id="page-content-wrapper">
+				
 	<div class="row">
 		<div class="col-md-12">
 			<div class="page-header cabecalho">
-				<h1>
-					<img src= "logo.jpg" alt="logo" title= "logotipo"
-			     width="100" align= left/>	My Recycle
+				<h1>  <!-- Modificado -->
+					<img src= "images/logo.jpg" alt="logo" title= "logotipo"
+			     width="100" />	My Recycle
 				</h1>
 			</div>
 		</div>
@@ -34,15 +47,13 @@
 	<div class="row">
 		<div class="col-md-2 lateral5">
 		
-		      <li><a href="Index.html">Home</a></li> <br/>
-            <li><a href="Compra.html">Compras</a></li><br/>
-			<li><a href="Venda.html">Vendas</a></li><br/>
-            <li><a href="Consulta.html">Consulte seu histórico</a></li>
+		      
 		</div>
 		<div class="col-md-8 centro5">
 		
-		<h3> Consulta de Histórico</h3>
-		___________________________________________________________________________________________________________________
+		<h3 align="center"> Gerenciar Transações
+		___________________________________________________________________________
+		</h3>
 		<br/>
 		<br/>
 		<br/>
@@ -50,13 +61,25 @@
 				<div class="form-group">
 					 
 					<label for="inputnome3" class="col-sm-2 control-label">
-						Digite o CPF/CNPJ do Cliente:
+						Busque pelo Produto:
 					</label>
 					
 					<div class="col-sm-10">
-						<input type="id" class="form-control" id="inputId3" onkeypress='return event.charCode>= 48&& event.charCode<=57'></input>
-						(Insira apenas números)
+						<input type="id" class="form-control" id="inputId3"></input>
+						<br/>
+	Compra:<input type="radio" value="Compra" ng-model="servico"/>
+	Venda:<input type="radio" value="Venda" ng-model="servico"/>
+	<br/>	
+	<br/>
+	<select ng-model= "pegar_id">
+	<option value="">---Status--</option>
+	<option ng-repeat="pessoa in listaRegistro"value="{{pessoa.ID_PESSOA}}">
+	</option>
+	</select>
+						
 					</div>
+					
+					
 				</div>
 				<br/>
 				<br/>
@@ -64,7 +87,7 @@
 				<thead>
 					<tr>
 						<th>
-							Nome
+							Cliente
 						</th>
 						<th>
 							Produto
@@ -73,10 +96,10 @@
 							Quantidade
 						</th>
 						<th>
-							Tipo de Servico
+							Valor
 						</th>
 						<th>
-							Valor
+							Status
 						</th>
 						<th></th>
 					</tr>
@@ -94,15 +117,63 @@
 						</td>
 						
 						<td>
-						   Compra
+						   300,00
 						</td>
 						<td>
-						   R$ 300,00
+						 Em transação
 						</td>
 												
 					</tr>					
 				</tbody>
 			</table>
+			<br/>
+				<br/>
+				<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>
+							Cliente
+						</th>
+						<th>
+							Produto
+						</th>
+						<th>
+							Quantidade
+						</th>
+						<th>
+							Valor
+						</th>
+						<th>
+							Status
+						</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							Coca cola
+						</td>
+						<td>
+							Plástico
+						</td>
+						<td>
+						   200 kg
+						</td>
+						
+						<td>
+						   300,00
+						</td>
+						<td>
+						 Em transação
+						</td>
+												
+					</tr>					
+				</tbody>
+			</table>
+				
+			
+			
 			</div>
 	  
 		<div class="col-md-2">
@@ -112,6 +183,8 @@
 		<div class="col-md-12 rodape " align ="center">
 			 <h5>
 			<address>
+			
+			_________________________________________________________________________________<br/>
 				 <strong><em>My Recycle</strong><br> Av. Recife-600<br> Recife-PE<br> <abbr title="Phone">Telefone:</abbr> (81)3456-7890 </em>
 			</address>
 			</h5>

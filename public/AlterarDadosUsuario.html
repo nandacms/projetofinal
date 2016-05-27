@@ -16,6 +16,7 @@
 
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/style.css" rel="stylesheet">
+<link href="css/simple-sidebar.css" rel="stylesheet">
 <link href="css/paginaUm.css" rel="stylesheet">
 
 <!-- importando as bibliotecas -->
@@ -28,26 +29,44 @@
 <body ng-controller="myController">
 
 	<div class="container-fluid">
+	   <div id="wrapper">
+			<div id="sidebar-wrapper">
+				<ul class="sidebar-nav">
+					<li class="sidebar-brand"><a href="#">  My Recycle </a></li>
+					<li><a href="Index.html">Home</a></li>
+					<li><a href="" ng-click="compra()">Compras</a></li>
+					<li><a href="" ng-click="venda()">Vendas</a></li>
+					<li><a href="" ng-click="consulta()">Consulte seu
+							histórico</a></li>
+					<li><a href="" ng-click="alterarDadosUsuario()">Alterar
+							Dados do Usuario</a></li>
+				</ul>
+			</div>
+			<div id="page-content-wrapper">
 		<div class="row">
 			<div class="col-md-12">
 				<div class="page-header cabecalho">
 					<h1>
-						<img src="logo.jpg" alt="logo" title="logotipo" width="100"
+						<img src="images/logo.jpg" alt="logo" title="logotipo" width="100"
 							align=left /> My Recycle
 					</h1>
 				</div>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-2 lateral2">
-
-
-				<li><a href="Compras.html">Compras</a></li> <br />
-				<li><a href="Vendas.html">Vendas</a></li> <br />
-				<li><a href="Consulta.html">Consulte seu histórico</a></li>
-			</div>
+		
+			
 			<div class="row">
-				<div class="col-md-8 centro">
+				<div class="col-md-12 centro" >
+				<h2 align="center"> Alterar Cadastro<br/>
+			_______________________________________________________</h2>
+			</div>
+			
+		<div class="col-md-2 lateral2">
+			
+			
+			</div>
+			<div class="col-md-8 centro">
 
 					<form class="form-horizontal" role="form">
 						<div class="form-group">
@@ -138,6 +157,8 @@
 				<div class="col-md-12 rodape2 " align="center">
 					<h5>
 						<address>
+						_________________________________________________________________________________________
+						<br/>
 							<strong><em>My Recycle </strong><br> Av. Recife-600<br>
 							Recife-PE<br> <abbr title="Phone">Telefone:</abbr>
 							(81)3456-7890 </em>
