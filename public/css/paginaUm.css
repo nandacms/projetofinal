@@ -1,40 +1,54 @@
-.rodape{
-	
+.rodape {
 	margin-top: 200px
-	
 }
 
-.lateral{
+.lateral {
 	margin-top: 50px
 }
 
 h1 {
-margin-left: 20px
+	margin-left: 20px
 }
 
-.centro{
+.centro {
 	margin-top: 30x
 }
 
+.transp-block {
+	background: #000 url(marca.jpg) no-repeat;
+	width: 700px;
+	height: 335px;
+}
 
-.transp-block {    background: #000 url(marca.jpg) no-repeat;    width: 700px;    height: 335px;}img.transparent {    filter:alpha(opacity=75);    opacity:.75;}
+img.transparent {
+	filter: alpha(opacity = 75);
+	opacity: .75;
+}
 
 h5 {
-	
 	margin-top: 90px
 }
 
-.lateral5{
-	margin-top:50px
-	}
+.lateral5 {
+	margin-top: 50px
+}
+
 .lateralanuncio {
 	margin-top: 30px
 }
 
-.cabecalhocad{
-	margin-left:  170px
+.cabecalhocad {
+	margin-left: 170px
 }
 
-h1{
-	font-text:"#A0522D"
+.table {
+	text-transform: uppercase
+}
+
+.teste {
+	text-transform: uppercase
+}
+
+h1 {
+	font-text: "#A0522D"
 }

@@ -1,11 +1,11 @@
 app.controller("compraController", function($scope,$http) {
-	
+
 	$scope.qntdEscolhida = "";
 	$scope.listaProdutos = [];
 	$scope.produtosEscolhidos = [];
 	$scope.id;
 	$scope.soma = 0;
-	
+
 	$scope.resgatarSessao = function(tela) {
 
 		$http(
@@ -53,14 +53,14 @@ app.controller("compraController", function($scope,$http) {
 						$scope.listarUsuarioId();
 
 					}else if(tela == 6){
-												 
+
 						if($scope.sessaoUsuario.tipo == "pf" || $scope.sessaoUsuario.tipo == "pj"  ){
-						window.location.href = "Inicial.html";
+							window.location.href = "Inicial.html";
 						} else{
 							window.location.href = "InicialAdmin.html";
 						}
 					}else if(tela == 7){
-						
+
 						$http.delete("/deletarUsuario/"+$scope.sessaoUsuario._id)
 
 						.then(
@@ -70,9 +70,9 @@ app.controller("compraController", function($scope,$http) {
 								}, function(response){
 									alert(response.data);
 								});
-						
-						 
-						
+
+
+
 					}
 
 
@@ -81,16 +81,16 @@ app.controller("compraController", function($scope,$http) {
 				});
 
 	}
-	
+
 	$scope.resgatarSessao(0);
-	
+
 	$scope.verificarStatusLogin = function() {
 
 		$scope.usuarioLogado  =  $scope.sessaoUsuario;
 
 	}
-	
-	
+
+
 	$scope.listarProdutos = function(){
 		$http({
 			method:'GET',
@@ -104,7 +104,7 @@ app.controller("compraController", function($scope,$http) {
 		});
 	};
 	$scope.listarProdutos();
-	
+
 	$scope.adicionarProdutos = function(id, produtos){
 		$scope.produtosEscolhidos.push(produtos);
 		var obj = id;
@@ -114,7 +114,7 @@ app.controller("compraController", function($scope,$http) {
 				if($scope.produtosEscolhidos[x]._id == obj){
 					$scope.produtosEscolhidos[x].valorTotal = $scope.produtosEscolhidos[x].precoProduto * $scope.produtosEscolhidos[x].qntdEscolhida;
 					$scope.soma = $scope.soma + $scope.produtosEscolhidos[x].valorTotal;
-					
+
 				}
 			}else{
 				$scope.produtosEscolhidos.splice(x,1);
@@ -123,7 +123,7 @@ app.controller("compraController", function($scope,$http) {
 			}
 		}
 	};
-	
+
 	$scope.adicionarCompra = function(){
 		//$scope.resgatarSessao(0);
 		console.log($scope.sessaoUsuario._id);
@@ -137,17 +137,17 @@ app.controller("compraController", function($scope,$http) {
 			headers: {'Content-Type': 'application/json'}
 		})
 		.then(
-			function(response){
-				window.location.reload();
-			},
-			function(response){
-				alert(response.data);
-			}
+				function(response){
+					window.location.reload();
+				},
+				function(response){
+					alert(response.data);
+				}
 		);
 	};
-	
-	
-	
+
+
+
 
 
 	$scope.compra = function() {
@@ -201,5 +201,5 @@ app.controller("compraController", function($scope,$http) {
 
 	}
 
-	
+
 });
