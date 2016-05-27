@@ -43,6 +43,94 @@ app.controller("myControllerNovaConta", function($scope, $http) {
 
 	}
 
-	
+	$scope.resgatarSessao = function(tela) {
+
+		$http(
+				{
+					method : 'GET',
+					url : '/sessaoConsultar' 
+
+				}).then(function successCallback(response) {
+
+					$scope.sessaoUsuario = response.data;
+				//	$scope.verificarStatusLogin();
+				
+					if(tela == 1){
+						if($scope.sessaoUsuario ==null){
+							window.location.href = "LoginUsuario.html";
+						}else{
+
+							window.location.href = "Compra.html";
+						}
+					}else if(tela == 2){
+						if($scope.sessaoUsuario ==null){
+							window.location.href = "LoginUsuario.html";
+						}else{
+
+							window.location.href = "Venda.html";
+						}
+					}else if(tela == 3){
+						if($scope.sessaoUsuario ==null){
+							window.location.href = "LoginUsuario.html";
+						}else{
+
+							window.location.href = "Consulta.html";
+						}
+					}else if(tela == 4){
+
+						if($scope.sessaoUsuario ==null){
+							window.location.href = "LoginUsuario.html";
+						}else{
+
+							window.location.href = "AlterarDadosUsuario.html";
+
+						}
+
+					}else if(tela == 5){
+						$scope.listarUsuarioId();
+
+					}else if(tela == 6){
+
+						if($scope.sessaoUsuario.tipo == "pf" || $scope.sessaoUsuario.tipo == "pj"  ){
+							window.location.href = "Inicial.html";
+						} else{
+							window.location.href = "InicialAdmin.html";
+						}
+					}else if(tela == 7){
+
+						$http.delete("/deletarUsuario/"+$scope.sessaoUsuario._id)
+
+						.then(
+								function(response){
+									$scope.logOff();
+									window.location.href = "LoginUsuario.html";
+								}, function(response){
+									alert(response.data);
+								});
+
+
+
+					}else if(tela == 0){
+
+						if($scope.sessaoUsuario._id != null || $scope.sessaoUsuario._id != "" ){
+
+							if($scope.sessaoUsuario.tipo == "pf" || $scope.sessaoUsuario.tipo == "pj"  ){
+								window.location.href = "Inicial.html";
+							} else if ($scope.sessaoUsuario.tipo == "adm"){
+								window.location.href = "InicialAdmin.html";
+							}
+						}
+
+
+					}
+
+
+				}, function errorCallback(response) {
+					alert(response.data);
+				});
+
+	}
+
+	$scope.resgatarSessao(0);
 	
 });

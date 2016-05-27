@@ -1,76 +1,147 @@
 <!DOCTYPE html>
-<html lang="en" ng-app = "myApp">
-  <head>
+<html lang="en" ng-app="myApp>
+
+<head>
+
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-	<script src="js/angular.min.js"></script>
-	<script src="js/myApp.js"></script>
-	<script src="js/myContrl.js"></script> 
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
 
-    <title>My Recycle</title>
+<title>Full Slider - Start Bootstrap Template</title>
 
-    <meta name="description" content="Source code generated using layoutit.com">
-    <meta name="author" content="LayoutIt!">
+<!-- Bootstrap Core CSS -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
 
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-	 <link href="css/paginaUm.css"rel="stylesheet">
+<!-- Custom CSS -->
+<link href="css/full-slider.css" rel="stylesheet">
 
-  </head>
-  <body ng-controller = "myContrl">
 
-    <div class="container-fluid">
-	<div class="row">
-		<div class="col-md-12">
-			<div class="page-header cabecalho">
-				<h1 font-color="#A0522D">
-				<img src= "logo.jpg" alt="logo" title= "logotipo"
-			     width="100" align= left/>	My Recycle
-				</h1>
+<script src="js/angular.min.js"></script>
+<script src="js/myApp.js"></script>
+<script src="js/myContrl.js"></script>
+</head>
+
+<body ng-controller="myController">
+
+	<!-- Navigation -->
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="container">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">My Recycle</a>
+			</div>
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse"
+				id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="index.html">Pagina Inicial</a></li>
+					<li><a href="index.html">Quem Somos</a></li>
+					<li><a href="LoginUsuario.html">Pagina de Login</a></li>
+				</ul>
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container -->
+	</nav>
+
+	<!-- Full Page Image Background Carousel Header -->
+	<header id="myCarousel" class="carousel slide">
+		<!-- Indicators -->
+		<ol class="carousel-indicators">
+			<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+			<li data-target="#myCarousel" data-slide-to="1"></li>
+			<li data-target="#myCarousel" data-slide-to="2"></li>
+		</ol>
+
+		<!-- Wrapper for Slides -->
+		<div class="carousel-inner">
+			<div class="item active">
+				<!-- Set the first background image using inline CSS below. -->
+				<div class="fill"
+					style="background-image: url('images/slideImg1.jpg');"></div>
+				<div class="carousel-caption">
+					<h2>Caption 1</h2>
+				</div>
+			</div>
+			<div class="item">
+				<!-- Set the second background image using inline CSS below. -->
+				<div class="fill"
+					style="background-image: url('http://placehold.it/1900x1080&amp;text=Slide Two');"></div>
+				<div class="carousel-caption">
+					<h2>Caption 2</h2>
+				</div>
+			</div>
+			<div class="item">
+				<!-- Set the third background image using inline CSS below. -->
+				<div class="fill"
+					style="background-image: url('http://placehold.it/1900x1080&amp;text=Slide Three');"></div>
+				<div class="carousel-caption">
+					<h2>Caption 3</h2>
+				</div>
 			</div>
 		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-2 lateral5">
-		
-		      <li><a href="Login.html">Login</a></li> <br/>
-            <li><a href="Compra.html">Compras</a></li><br/>
-			<li><a href="Venda.html">Vendas</a></li><br/>
-           	
-		</div>
-		<div class="col-md-8 centro5">
-		
-		<h3> Home </h3>
-		___________________________________________________________________________________________________________________
-		<br/>
-	
-	  </div>
-<div class="col-md-2 centro5">
-<img src= "vidro.jpg" alt="vidr" title= "vd"
-			     width="150" align= left/>
-			     <img src= "metal.jpg" alt="metal" title= "metal1"
-			     width="150" align=right/>	
-	    <img src= "plástico.jpg" alt="pls" title= "pls"
-	    width="150" align= right/>	
-	    
-	 <img src= "papel.jpg" alt="pp" title= "ppl"
-			     width="150" align= right/>	
-</div>		
-	</div>
-	<div class="row">
-		<div class="col-md-12 rodape " align ="center">
-			 <h5>
-			<address>
-				 <strong><em>My Recycle</strong><br> Av. Recife-600<br> Recife-PE<br> <abbr title="Phone">Telefone:</abbr> (81)3456-7890 </em>
-			</address>
-			</h5>
-		</div>
-	</div>
-</div>
 
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/scripts.js"></script>
-  </body>
+		<!-- Controls -->
+		<a class="left carousel-control" href="#myCarousel" data-slide="prev">
+			<span class="icon-prev"></span>
+		</a> <a class="right carousel-control" href="#myCarousel"
+			data-slide="next"> <span class="icon-next"></span>
+		</a>
+
+	</header>
+
+	<!-- Page Content -->
+	<div class="container">
+
+		<div class="row">
+			<div class="col-lg-12">
+				<h1>Full Slider by Start Bootstrap</h1>
+				<p>
+					The background images for the slider are set directly in the HTML
+					using inline CSS. The rest of the styles for this template are
+					contained within the
+					<code>full-slider.css</code>
+					file.
+				</p>
+			</div>
+		</div>
+
+		<hr>
+
+		<!-- Footer -->
+		<footer>
+			<div class="row">
+				<div class="col-lg-12">
+					<p>Copyright &copy; Your Website 2014</p>
+				</div>
+			</div>
+			<!-- /.row -->
+		</footer>
+
+	</div>
+	<!-- /.container -->
+
+	<!-- jQuery -->
+	<script src="js/jquery.min.js"></script>
+
+	<!-- Bootstrap Core JavaScript -->
+	<script src="js/bootstrap.min.js"></script>
+
+	<!-- Script to Activate the Carousel -->
+	<script>
+    $('.carousel').carousel({
+        interval: 5000 //changes the speed
+    })
+    </script>
+
+</body>
+
 </html>
