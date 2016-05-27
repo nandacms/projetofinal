@@ -153,11 +153,17 @@ app.put('/editarProduto', function(req,res){
 
 app.put('/adicionarVenda', function (req, res) {
 	usuarioServiceInstance.salvarVenda(req.body, function(response){
-		res.send(response);
+		produtoServiceInstance.alterarAdicionarEstoque(req.body, function(response){
+			res.send(response);
+		}, function(err){
+			res.send(err);
+		});
+		
 	}, function(err){
 		res.send(err);
 	});
 });
+
 
 //metodos da venda aqui dentro fim
 
@@ -165,7 +171,11 @@ app.put('/adicionarVenda', function (req, res) {
 
 app.put('/adicionarCompra', function (req, res) {
 	usuarioServiceInstance.salvarCompra(req.body, function(response){
-		res.send(response);
+		produtoServiceInstance.alterarEstoque(req.body, function(response){
+			res.send(response);
+		}, function(err){
+			res.send(err);
+		});
 	}, function(err){
 		res.send(err);
 	});

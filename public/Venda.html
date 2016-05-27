@@ -1,162 +1,163 @@
 <!DOCTYPE html>
-<html lang="en" ng-app= "myApp" >
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-	<script src="js/angular.min.js"></script>
-	<script src="js/myApp.js"></script>
-	<script src="js/vendaController.js"></script> 
-    <title>My Recycle - Venda</title>
+<html lang="en" ng-app="myApp">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="js/angular.min.js"></script>
+<script src="js/myApp.js"></script>
+<script src="js/vendaController.js"></script>
+<title>My Recycle - Venda</title>
 
-    <meta name="description" content="Source code generated using layoutit.com">
-    <meta name="author" content="LayoutIt!">
+<meta name="description"
+	content="Source code generated using layoutit.com">
+<meta name="author" content="LayoutIt!">
 
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/simple-sidebar.css" rel="stylesheet">
-	<link href="css/paginaUm.css"rel="stylesheet">
-	
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<link href="css/simple-sidebar.css" rel="stylesheet">
+<link href="css/paginaUm.css" rel="stylesheet">
 
-  </head>
-  <body ng-controller= "vendaController">
-  <div class="container-fluid">
-  <div id="wrapper">
+
+</head>
+<body ng-controller="vendaController">
+	<div class="container-fluid">
+		<div id="wrapper">
 			<div id="sidebar-wrapper">
 				<ul class="sidebar-nav">
-					<li class="sidebar-brand"><a href="#">  My Recycle </a></li>
-					<li><a href="Index.html">Home</a></li>
+					<li class="sidebar-brand"><a href="#"> My Recycle </a></li>
+					<li><a href="#">Pagina Inicial</a></li>
 					<li><a href="" ng-click="compra()">Compras</a></li>
 					<li><a href="" ng-click="venda()">Vendas</a></li>
 					<li><a href="" ng-click="consulta()">Consulte seu
 							histórico</a></li>
 					<li><a href="" ng-click="alterarDadosUsuario()">Alterar
 							Dados do Usuario</a></li>
+					<li><a href="" ng-click="logOff()"> Sair da Conta</a></li>
 				</ul>
 			</div>
 			<div id="page-content-wrapper">
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col-lg-12">
-			
-		<div class="row">
-		<div class="col-md-12">
-			<div class="page-header cabecalho">
-				<h1>
-					<img src= "images/logo.jpg" alt="logo" title= "logotipo"
-			     width="100" align= left/>	My Recycle
-				</h1>
-			</div>
-		</div>
-	</div>
-	<div class="row">
-	
-			<div class="col-md-2 lateral">
 
-				
-			</div>
-		
-		<div class="col-md-8 centro" align="center">
-		<h2>        Vendas <br/>
-		___________________________________________________
-		</h2>
-		
-			<form class="form-horizontal" role="form" align="right">
-				<div class="form-group"align="center">
-					 <label class="control-label">
-							Produtos Disponíveis: </label>
-							<table class="table" align="center">
-								<thead>
-									<tr>
-										<th>Produto</th>
-										<th>Quantidade Disponível</th>
-										<th>Valor do Produto (Por Kg)</th>
-<!-- 										<th>Quanto deseja vender</th>
- -->										<th></th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr ng-repeat="produtos in listaProdutos">
-										<td>{{produtos.descricao}}</td>
-										<td>{{produtos.quantidadeEstoque}} Kg</td>
-										<td>R$ {{produtos.precoProduto}}</td>
-										<!-- <td><input type="number" class="form-control" ng-model="qntdEscolhida" /></td> -->
-										<td><input type="button" class="btn btn-default" value="Adicionar" ng-click="adicionarProdutosEscolhidos(produtos)" /></td>
-										
-									</tr>
-								</tbody>
-							</table>
-							
-							<br/>
-							<br/>
-							
-						 <label class="control-label">
-							Produtos Selecionados para Venda: </label>
-							<br/>
-							<br/>
-							<table class="table" align= "right">
-								<thead>
-									<tr>
-										<th>Produto</th>
-										<th>Quantidade Disponível</th>
-										<th>Valor do Produto (Por Kg)</th>
-										<th>Quanto deseja vender</th>
-										<th></th>
-									</tr>
-								</thead>
-								<tbody ng-repeat="produtoEscolhido in produtosEscolhidos">
-									<tr>
-										<td>{{produtoEscolhido.descricao}}</td>
-										<td>{{produtoEscolhido.quantidadeEstoque}} Kg</td>
-										<td>R$ {{produtoEscolhido.precoProduto}}</td>
-										<td><input type="number" class="form-control" ng-model="qntdEscolhida" /></td>
-										<td><input type="button" class="btn btn-default" value="Apagar" ng-click="deletarProdutoEscolhido()" /></td>
-									</tr>
-								</tbody>
-							</table>
-				</div>
-				<br/>
-				
-					
-				
-				<br/>
-				
-					<div class="form-group">
-					 
-					<label for="inputnome3" class="col-sm-2 control-label">
-						Valor da Venda: R$ {{valorVenda}}						
-					</label>
-					<!-- <div class="col-sm-10">
+							<div class="row">
+								<div class="col-md-12">
+									<div class="page-header cabecalho">
+										<h1>
+											<img src="images/logo.jpg" alt="logo" title="logotipo"
+												width="100" align=left /> My Recycle
+										</h1>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+
+								<div class="col-md-2 lateral"></div>
+
+								<div class="col-md-8 centro" align="center">
+									<h2>
+										Vendas <br />
+										___________________________________________________
+									</h2>
+
+									<form class="form-horizontal" role="form" align="right">
+										<div class="form-group" align="center">
+											<label class="control-label"> Produtos Disponíveis: </label>
+											<table class="table" align="center">
+												<thead>
+													<tr>
+														<th>Produto</th>
+														<th>Quantidade Disponível</th>
+														<th>Valor do Produto (Por Kg)</th>
+														<th>Quanto deseja vender</th>
+														<th></th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr ng-repeat="produtos in listaProdutos">
+														<td>{{produtos.descricao}}</td>
+														<td>{{produtos.quantidadeEstoque}} Kg</td>
+														<td>R$ {{produtos.precoProduto}}</td>
+														<td><input type="number" class="form-control"
+															ng-model="produtos.qntdEscolhida" /></td>
+														<td><input type="button" class="btn btn-default"
+															value="Adicionar"
+															ng-click="adicionarProdutosEscolhidos(produtos)" /></td>
+
+													</tr>
+												</tbody>
+											</table>
+
+											<br /> <br /> <label class="control-label"> Produtos
+												Selecionados para Venda: </label> <br /> <br />
+											<table class="table" align="right">
+												<thead>
+													<tr>
+														<th>Produto</th>
+														<th>Quantidade Disponível</th>
+														<th>Valor do Produto (Por Kg)</th>
+														<th>Quanto deseja vender</th>
+														<th>Total por item</th>
+														<th></th>
+													</tr>
+												</thead>
+												<tbody ng-repeat="produtoEscolhido in produtosEscolhidos">
+													<tr>
+														<td>{{produtoEscolhido.descricao}}</td>
+														<td>{{produtoEscolhido.quantidadeEstoque}} Kg</td>
+														<td>R$ {{produtoEscolhido.precoProduto}}</td>
+														<td>{{produtoEscolhido.qntdEscolhida}}</td>
+														<td>
+														<td>R$
+															{{produtoEscolhido.precoProduto*produtoEscolhido.qntdEscolhida}}</td>
+														</td>
+														<!-- <td><input type="number" class="form-control" ng-model="qntdEscolhida" /></td> -->
+														<td><input type="button" class="btn btn-default"
+															value="Apagar" ng-click="deletarProdutoEscolhido()" /></td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+										<br /> <br />
+
+										<div class="form-group">
+
+											<label for="inputnome3" class="col-sm-2 control-label">
+												Valor da Venda: R$ {{soma}} </label>
+											<!-- <div class="col-sm-10">
 						<input type="id" class="form-control" id="inputId3">
 					</div> -->
-				</div>
-				
-		    </form>
-			  <input  align="center" type="button" class="btn btn-default" value="Efetuar Venda" ng-click="cadastrarCliente()"/>	
-		</div>
-					 
-				
-					
-	</div>
-	      
-	<div class="col-md-2">
-		</div>
-	
-	<div class="row">
-		<div class="col-md-12 rodapecad " align ="center">
-			 <h5>
-			<address>
-			________________________________________________________________________________________________________________________________<br/>
-				 <strong><em>My Recycle </strong><br> Av. Recife-600<br> Recife-PE<br> <abbr title="Phone">Telefone:</abbr> (81)3456-7890 </em>
-			</address>
-			</h5>
-		</div>
-	</div>
-</div>
+										</div>
+
+									</form>
+									<input align="center" type="button" class="btn btn-default"
+										value="Efetuar Venda" ng-click="adicionarVenda()" />
+								</div>
 
 
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <!-- <script src="js/scripts.js"></script> -->
-  </body>
+
+							</div>
+
+							<div class="col-md-2"></div>
+
+							<div class="row">
+								<div class="col-md-12 rodapecad " align="center">
+									<h5>
+										<address>
+											________________________________________________________________________________________________________________________________<br />
+											<strong><em>My Recycle </strong><br> Av. Recife-600<br>
+											Recife-PE<br> <abbr title="Phone">Telefone:</abbr>
+											(81)3456-7890 </em>
+										</address>
+									</h5>
+								</div>
+							</div>
+						</div>
+
+
+						<script src="js/jquery.min.js"></script>
+						<script src="js/bootstrap.min.js"></script>
+						<!-- <script src="js/scripts.js"></script> -->
+</body>
 </html>

@@ -306,7 +306,13 @@ app.controller("myControllerLogado", function($scope, $http) {
 		if($scope.sessaoUsuario._id == null || $scope.sessaoUsuario._id == "" ){
 			window.location.href = "LoginUsuario.html";
 		}else{
-		$scope.resgatarSessao(3);
+			if($scope.sessaoUsuario.tipo == "pj" || $scope.sessaoUsuario.tipo == "pf"){
+
+				window.location.href = "Consulta.html";
+			}else if($scope.sessaoUsuario.tipo == "adm"){
+				window.location.href = "GerencimanentoAdministrador.html";
+			}
+			$scope.resgatarSessao(3);
 		}
 
 	}

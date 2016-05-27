@@ -34,7 +34,7 @@ function ProdutoService(mongoose, appSchema){
 	
 	this.alterarProduto = function (obj_produto, successCallback, errorCallback){
 		console.log(obj_produto);
-		Produto.update({_id: obj_produto._id},
+		Produto.update({_id: obj_produto.id},
 				{$set: {descricao: obj_produto.descricao,
 					precoProduto: obj_produto.precoProduto ,
 					quantidadeEstoque: obj_produto.quantidadeEstoque}},
@@ -44,6 +44,36 @@ function ProdutoService(mongoose, appSchema){
 							else successCallback(data);
 						});		
 	}	
+	
+	this.alterarEstoque = function (obj_usuario, successCallback, errorCallback){
+		
+		for (var x=0;x<obj_usuario.compra.produtos.length;x++){
+			Produto.update({_id: obj_usuario.compra.produtos[x]._id},
+					{$inc: {quantidadeEstoque: -obj_usuario.compra.produtos[x].qntdEscolhida}},
+							function(err,data){
+							
+								if (err) errorCallback(err);
+							});
+		}
+		
+		successCallback();
+	}
+	
+		this.alterarAdicionarEstoque = function (obj_usuario, successCallback, errorCallback){
+		
+		for (var x=0;x<obj_usuario.venda.produtos.length;x++){
+			console.log(obj_usuario.venda.produtos[x]._id);
+			Produto.update({_id: obj_usuario.venda.produtos[x]._id},
+					{$inc: {quantidadeEstoque: +obj_usuario.venda.produtos[x].qntdEscolhida}},
+							function(err,data){
+							
+								if (err) errorCallback(err);
+							});
+		}
+		
+		successCallback();
+	}
+	
 }		
 
 

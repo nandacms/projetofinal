@@ -1,199 +1,178 @@
 <!DOCTYPE html>
-<html lang="en" ng-app= "myApp" >
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-	<script src="js/angular.min.js"></script>
-	<script src="js/myApp.js"></script>
-	<script src="js/myContrl.js"></script> 
+<html lang="en" ng-app="myApp">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="js/angular.min.js"></script>
+<script src="js/myApp.js"></script>
+<script src="js/controllerConsultaAdm.js"></script>
 
-    <title>My Recycle</title>
+<title>My Recycle</title>
 
-    <meta name="description" content="Source code generated using layoutit.com">
-    <meta name="author" content="LayoutIt!">
+<meta name="description"
+	content="Source code generated using layoutit.com">
+<meta name="author" content="LayoutIt!">
 
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/simple-sidebar.css" rel="stylesheet">
-	 <link href="css/paginaUm.css"rel="stylesheet">
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<link href="css/simple-sidebar.css" rel="stylesheet">
+<link href="css/paginaUm.css" rel="stylesheet">
 
-  </head>
-  <body ng-controller= "myContrl">
+</head>
+<body ng-controller="controllerConsultaTransacoesAdm">
 
-    <div class="container-fluid">
-    <div id="wrapper">
+	<div class="container-fluid">
+		<div id="wrapper">
 			<div id="sidebar-wrapper">
 				<ul class="sidebar-nav">
 					<li class="sidebar-brand"><a href="#"> My Recycle </a></li>
-					<li><a href="InicialAdm.html">Home Page</a></li>
-					<li><a href="" ng-click="compra()">Cadastrar Produtos</a></li>
-					<li><a href="" ng-click="venda()">Gerenciar Transações</a></li>
-
+					<li><a href="#">Pagina Inicial</a></li>
+					<li><a href="" ng-click="compra()">Compras</a></li>
+					<li><a href="" ng-click="venda()">Vendas</a></li>
+					<li><a href="" ng-click="consulta()">Consulte seu
+							histórico</a></li>
+					<li><a href="" ng-click="alterarDadosUsuario()">Alterar
+							Dados do Usuario</a></li>
+					<li><a href="" ng-click="logOff()"> Sair da Conta</a></li>
 				</ul>
 			</div>
 			<div id="page-content-wrapper">
-				
-	<div class="row">
-		<div class="col-md-12">
-			<div class="page-header cabecalho">
-				<h1>  <!-- Modificado -->
-					<img src= "images/logo.jpg" alt="logo" title= "logotipo"
-			     width="100" />	My Recycle
-				</h1>
-			</div>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-2 lateral5">
-		
-		      
-		</div>
-		<div class="col-md-8 centro5">
-		
-		<h3 align="center"> Gerenciar Transações
-		___________________________________________________________________________
-		</h3>
-		<br/>
-		<br/>
-		<br/>
-		<form class="form-horizontal" role="form">
-				<div class="form-group">
-					 
-					<label for="inputnome3" class="col-sm-2 control-label">
-						Busque pelo Produto:
-					</label>
-					
-					<div class="col-sm-10">
-						<input type="id" class="form-control" id="inputId3"></input>
-						<br/>
-	Compra:<input type="radio" value="Compra" ng-model="servico"/>
-	Venda:<input type="radio" value="Venda" ng-model="servico"/>
-	<br/>	
-	<br/>
-	<select ng-model= "pegar_id">
-	<option value="">---Status--</option>
-	<option ng-repeat="pessoa in listaRegistro"value="{{pessoa.ID_PESSOA}}">
-	</option>
-	</select>
-						
-					</div>
-					
-					
-				</div>
-				<br/>
-				<br/>
-		<table class="table table-striped">
-				<thead>
-					<tr>
-						<th>
-							Cliente
-						</th>
-						<th>
-							Produto
-						</th>
-						<th>
-							Quantidade
-						</th>
-						<th>
-							Valor
-						</th>
-						<th>
-							Status
-						</th>
-						<th></th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>
-							Coca cola
-						</td>
-						<td>
-							Plástico
-						</td>
-						<td>
-						   200 kg
-						</td>
-						
-						<td>
-						   300,00
-						</td>
-						<td>
-						 Em transação
-						</td>
-												
-					</tr>					
-				</tbody>
-			</table>
-			<br/>
-				<br/>
-				<table class="table table-striped">
-				<thead>
-					<tr>
-						<th>
-							Cliente
-						</th>
-						<th>
-							Produto
-						</th>
-						<th>
-							Quantidade
-						</th>
-						<th>
-							Valor
-						</th>
-						<th>
-							Status
-						</th>
-						<th></th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>
-							Coca cola
-						</td>
-						<td>
-							Plástico
-						</td>
-						<td>
-						   200 kg
-						</td>
-						
-						<td>
-						   300,00
-						</td>
-						<td>
-						 Em transação
-						</td>
-												
-					</tr>					
-				</tbody>
-			</table>
-				
-			
-			
-			</div>
-	  
-		<div class="col-md-2">
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-12 rodape " align ="center">
-			 <h5>
-			<address>
-			
-			_________________________________________________________________________________<br/>
-				 <strong><em>My Recycle</strong><br> Av. Recife-600<br> Recife-PE<br> <abbr title="Phone">Telefone:</abbr> (81)3456-7890 </em>
-			</address>
-			</h5>
-		</div>
-	</div>
-</div>
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="row">
+								<div class="col-md-12">
+									<div class="page-header cabecalho">
+										<h1>
+											<img src="images/logo.jpg" alt="logo" title="logotipo"
+												width="100" align=left /> My Recycle
+										</h1>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-2 lateral5"></div>
+								<div class="col-md-8 centro5" align="center">
 
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/scripts.js"></script>
-  </body>
+									<div class="col-sm-10">
+
+										Compra:<input type="radio" value="Compra" ng-model="servico"
+											ng-click="show()" /> Venda:<input type="radio" value="Venda"
+											ng-model="servico" ng-click="hide()" /> <br /> <br /> <select
+											ng-model="pegar_id">
+											<option value="">---Status--</option>
+											<option ng-repeat="pessoa in listaRegistro"
+												value="{{pessoa.ID_PESSOA}}"></option>
+										</select>
+
+									</div>
+
+									<h2 align="center">Consulta de Histórico
+										________________________________________________</h2>
+									<br /> <br /> <br />
+									
+									<table class="table table-striped" align="center">
+											<thead>
+												<tr>
+
+													<th>Nome</th>
+													<th>CNPJ ou CPF</th>
+													<th></th>
+
+												</tr>
+											</thead>
+											<tbody>
+												<tr ng-repeat="usuario in listaUsuarioslistar">
+													<td>{{usuario.nomeUsuario}}</td>
+													<td>{{usuario.login}}</td>
+													<th><input align="center" type="button"
+														value="Ver Compras/Vendas" ng-click="verComprasDoUsuario(usuario._id)" /></th>
+
+
+												</tr>
+											</tbody>
+										</table>
+										</br>
+																			
+									<div ng-show="mostrarCompra">
+										<h3>Lista de Compras</h3>
+										<table class="table table-striped" align="center">
+											<thead>
+												<tr>
+
+													<th>Valor</th>
+													<th>Status da Compra</th>
+													<th></th>
+
+												</tr>
+											</thead>
+											<tbody>
+												<tr ng-repeat="usuarioconsulta in ListaComprasFeitas">
+													<td>R$:{{usuarioconsulta.valorCompra}}</td>
+													<td>{{usuarioconsulta.status}}</td>
+													<th><input align="center" type="button"
+														value="Ver Produtos" ng-click="verProdutos($index)" /></th>
+
+
+												</tr>
+											</tbody>
+										</table>
+										</br>
+										
+									</div>
+
+									<div ng-show="mostrarVenda">
+										<h3>Lista de Vendas</h3>
+										<table class="table table-striped" align="center">
+											<thead>
+												<tr>
+
+													<th>Valor</th>
+													<th>Status da Compra</th>
+													<th></th>
+
+												</tr>
+											</thead>
+											<tbody>
+												<tr ng-repeat="usuarioconsulta in ListaVendasFeitas">
+													<td>R$:{{usuarioconsulta.valorVenda}}</td>
+													<td>{{usuarioconsulta.status}}</td>
+													<th><input align="center" type="button"
+														value="Ver Produtos" ng-click="verProdutosVenda($index)" /></th>
+
+
+												</tr>
+											</tbody>
+										</table>
+										</br>
+										
+									</div>
+								</div>
+
+								<div class="col-md-2"></div>
+							</div>
+							<div class="row">
+								<div class="col-md-12 rodape " align="center">
+									<h5>
+										<address>
+											____________________________________________________________________________________<br />
+											<strong><em>My Recycle</strong><br> Av. Recife-600<br>
+											Recife-PE<br> <abbr title="Phone">Telefone:</abbr>
+											(81)3456-7890 </em>
+										</address>
+									</h5>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+
+</body>
 </html>

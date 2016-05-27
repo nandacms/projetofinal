@@ -1,7 +1,5 @@
-app.controller("myController", function($scope, $http) {
-
-	// Codigo do controlador aqui
-
+app.controller("controllerConsultaTransacoesAdm", function($scope, $http) {
+	$scope.listaUsuarioslistar=[];
 
 	$scope.listarTodosUsuarios = function() {
 		// pode receber parametros que nem o deletar
@@ -11,7 +9,16 @@ app.controller("myController", function($scope, $http) {
 
 		}).then(function successCallback(response) {
 
-			$scope.listaTabelaUsuarios = response.data;
+			$scope.listaUsuarios = response.data;
+			for(var x = 0; x< $scope.listaUsuarios.length; x++){
+				var usuario = $scope.listaUsuarios[x];
+				if(usuario.tipo !="adm"){
+
+					$scope.listaUsuarioslistar.push(usuario);
+
+				}
+
+			}
 
 		}, function errorCallback(response) {
 			alert(response.data);
@@ -19,6 +26,7 @@ app.controller("myController", function($scope, $http) {
 
 	};
 
+	$scope.listarTodosUsuarios();
 	$scope.listarUsuarioId = function() {
 		// pode receber parametros que nem o deletar
 		$http({
@@ -51,6 +59,71 @@ app.controller("myController", function($scope, $http) {
 				$scope.cidadeEdit =usuario.endereco.cidade;
 				$scope.cepEdit=usuario.endereco.cep ;
 				$scope.complementoEdit = usuario.endereco.complemento ;
+			}else{
+
+				window.location.href = "LoginUsuario.html";
+
+			}
+
+		}, function errorCallback(response) {
+			alert(response.data);
+		});
+
+	};
+	$scope.listarUsuarioId2 = function(index) {
+		// pode receber parametros que nem o deletar
+		$http({
+			method : 'GET',
+			url : '/getUsuariosId/'+ $scope.id_user_escolhido
+
+		}).then(function successCallback(response) {
+
+			$scope.dadosUsuarioLogado = response.data;
+			$scope.objUsuarioLogado = new Object();
+			$scope.objUsuarioLogado = $scope.dadosUsuarioLogado[0]
+			var usuario = new Object();
+
+			if($scope.objUsuarioLogado !=null ||  $scope.objUsuarioLogado != ""  ){
+
+				var usuario = $scope.objUsuarioLogado;
+				$scope.ListaComprasFeitas = usuario.compras;
+				$scope.ListaVendasFeitas = usuario.vendas;
+				if($scope.vp ==1){
+					if(index == -1 ){
+
+
+					}else{
+						$scope.ListaComprasProdutos =$scope.ListaComprasFeitas;
+
+					}
+
+				}else if($scope.vp ==2){
+					if(index == -1 ){
+
+
+					}else{
+						$scope.ListaVendasProdutos =$scope.ListaVendasFeitas[index].produtos;
+
+					}
+
+
+
+				}else if($scope.vp ==3){
+					if(index == -1 ){
+
+
+					}else{
+						$scope.ListaVendasProdutos =$scope.ListaVendasFeitas[index].produtos;
+
+					}
+
+
+
+				}
+
+
+
+
 			}else{
 
 				window.location.href = "LoginUsuario.html";
@@ -133,6 +206,7 @@ app.controller("myController", function($scope, $http) {
 					$scope.sessaoUsuario = response.data;
 					$scope.verificarStatusLogin();
 
+					//$scope.listarUsuarioId();
 					if(tela == 1){
 						if($scope.sessaoUsuario ==null){
 							window.location.href = "LoginUsuario.html";
@@ -188,19 +262,13 @@ app.controller("myController", function($scope, $http) {
 
 
 
-					}else if(tela == 0){
+					}else if(tela == 9){
 
-						if($scope.sessaoUsuario._id != null || $scope.sessaoUsuario._id != "" ){
-
-							if($scope.sessaoUsuario.tipo == "pf" || $scope.sessaoUsuario.tipo == "pj"  ){
-								window.location.href = "Inicial.html";
-							} else if ($scope.sessaoUsuario.tipo == "adm"){
-								window.location.href = "InicialAdmin.html";
-							}
-						}
+						$scope.listarUsuarioId2(-1);
 
 
 					}
+
 
 
 				}, function errorCallback(response) {
@@ -318,12 +386,6 @@ app.controller("myController", function($scope, $http) {
 		if($scope.sessaoUsuario._id == null || $scope.sessaoUsuario._id == "" ){
 			window.location.href = "LoginUsuario.html";
 		}else{
-			if($scope.sessaoUsuario.tipo == "pj" || $scope.sessaoUsuario.tipo == "pf"){
-
-				window.location.href = "Consulta.html";
-			}else if($scope.sessaoUsuario.tipo == "adm"){
-				window.location.href = "GerencimanentoAdministrador.html";
-			}
 			$scope.resgatarSessao(3);
 		}
 
@@ -337,6 +399,28 @@ app.controller("myController", function($scope, $http) {
 		}
 	}
 
+	$scope.listarCompras = function() {
+
+		$scope.resgatarSessao(9);
+	}
+	$scope.listarCompras();
+
+	$scope.verProdutos = function(index) {
+		$scope.vp = 1;
+		$scope.listarUsuarioId2(index) ;
+	}
+	$scope.verProdutosVenda = function(index) {
+		$scope.vp = 2;
+		$scope.listarUsuarioId2(index) ;
+	}
+	
+	$scope.verComprasDoUsuario = function(usuario_id) {
+		$scope.vp = 1;
+		$scope.id_user_escolhido = usuario_id;
+		$scope.listarUsuarioId2(usuario_id) ;
+	}
+
+
 	$scope.paginaInicial = function() {
 
 
@@ -345,19 +429,19 @@ app.controller("myController", function($scope, $http) {
 	}
 
 
+	$scope.show = function(index) {
+
+		$scope.mostrarCompra = true;
+		$scope.mostrarVenda = false;
+	}
+	$scope.hide = function(index) {
+
+		$scope.mostrarCompra = false;
+		$scope.mostrarVenda = true;
+
+	}
+	
+
 
 
 });
-
-function SomenteNumero(e) {
-	var tecla = (window.event) ? event.keyCode : e.which;
-	if ((tecla > 47 && tecla < 58))
-		return true;
-	else {
-		if (tecla == 8 || tecla == 0)
-			return true;
-		else
-			return false;
-	}
-}
-
