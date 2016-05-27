@@ -1,8 +1,7 @@
 app.controller("myController", function($scope, $http) {
 
 	// Codigo do controlador aqui
-
-
+	
 
 	$scope.listarTodosUsuarios = function() {
 		// pode receber parametros que nem o deletar
@@ -32,7 +31,32 @@ app.controller("myController", function($scope, $http) {
 			$scope.objUsuarioLogado = new Object();
 			$scope.objUsuarioLogado = $scope.dadosUsuarioLogado[0]
 			//$scope.editarDadosUsuario();
-			
+
+			var usuario = new Object();
+
+			if($scope.objUsuarioLogado !=null ||  $scope.objUsuarioLogado != ""  ){
+
+				usuario = $scope.objUsuarioLogado;
+
+
+				$scope._id = usuario._id;
+				$scope.nomeUsuarioEdit = usuario.nomeUsuario;
+				//$scope.login_usuario = usuario.login; 		
+				$scope.senha_usuarioEdit = usuario.senha;
+
+				$scope.residencialEdit=usuario.telefone.residencial;
+				$scope.celularEdit = usuario.telefone.celular;
+
+				$scope.estadoEdit=usuario.endereco.estado ;
+				$scope.cidadeEdit =usuario.endereco.cidade;
+				$scope.cepEdit=usuario.endereco.cep ;
+				$scope.complementoEdit = usuario.endereco.complemento ;
+			}else{
+
+				window.location.href = "LoginUsuario.html";
+
+			}
+
 		}, function errorCallback(response) {
 			alert(response.data);
 		});
@@ -73,16 +97,18 @@ app.controller("myController", function($scope, $http) {
 			$http(
 					{
 						method : 'GET',
-						url : '/sessaoAdicionar/'+ usuario._id 
+						url : '/sessaoAdicionar/'+ usuario._id + '/' + usuario.tipo
 						//+ "/" + $scope.login + "/" + $scope.senha
 
 					}).then(function successCallback(response) {
 
 						//redirecionar para a pagina do usuario
 						$scope.resgatarSessao(0);
-//						$scope.editarDadosUsuario();
+						if(usuario.tipo == "pf" ||  usuario.tipo == "pj"){
 						window.location.href = "Inicial.html";
-						//$scope.resgatarSessao();
+						}else{
+							window.location.href = "InicialAdmin.html";
+						}
 
 					}, function errorCallback(response) {
 						alert(response.data);
@@ -106,81 +132,71 @@ app.controller("myController", function($scope, $http) {
 
 					$scope.sessaoUsuario = response.data;
 					$scope.verificarStatusLogin();
-					$scope.listarUsuarioId();
+					//$scope.listarUsuarioId();
 					if(tela == 1){
 						if($scope.sessaoUsuario ==null){
 							window.location.href = "LoginUsuario.html";
 						}else{
-						
-						window.location.href = "Compra.html";
+
+							window.location.href = "Compra.html";
 						}
 					}else if(tela == 2){
 						if($scope.sessaoUsuario ==null){
 							window.location.href = "LoginUsuario.html";
 						}else{
-						
-						window.location.href = "Venda.html";
+
+							window.location.href = "Venda.html";
 						}
 					}else if(tela == 3){
 						if($scope.sessaoUsuario ==null){
 							window.location.href = "LoginUsuario.html";
 						}else{
-						
-						window.location.href = "Consulta.html";
+
+							window.location.href = "Consulta.html";
 						}
 					}else if(tela == 4){
-						
+
 						if($scope.sessaoUsuario ==null){
 							window.location.href = "LoginUsuario.html";
 						}else{
-						
-						window.location.href = "AlterarDadosUsuario.html";
-					
-						}
-										
-					}
-					
-					if(tela == 5){
-						
-						var usuario = new Object();
 
-						if($scope.objUsuarioLogado !=null ||  $scope.objUsuarioLogado != ""  ){
-
-							usuario = $scope.objUsuarioLogado;
-								
-
-							$scope._id = usuario._id;
-							$scope.nomeUsuarioEdit = usuario.nomeUsuario;
-							//$scope.login_usuario = usuario.login; 		
-							$scope.senha_usuarioEdit = usuario.senha;
-
-							$scope.residencialEdit=usuario.telefone.residencial;
-							$scope.celularEdit = usuario.telefone.celular;
-
-							$scope.estadoEdit=usuario.endereco.estado ;
-							$scope.cidadeEdit =usuario.endereco.cidade;
-							$scope.cepEdit=usuario.endereco.cep ;
-							$scope.complementoEdit = usuario.endereco.complemento ;
-						}else{
-
-							window.location.href = "LoginUsuario.html";
+							window.location.href = "AlterarDadosUsuario.html";
 
 						}
 
+					}else if(tela == 5){
+						$scope.listarUsuarioId();
+
+					}else if(tela == 6){
+												 
+						if($scope.sessaoUsuario.tipo == "pf" || $scope.sessaoUsuario.tipo == "pj"  ){
+						window.location.href = "Inicial.html";
+						} else{
+							window.location.href = "InicialAdmin.html";
+						}
+					}else if(tela == 7){
+						
+						$http.delete("/deletarUsuario/"+$scope.sessaoUsuario._id)
+
+						.then(
+								function(response){
+									$scope.logOff();
+									window.location.href = "LoginUsuario.html";
+								}, function(response){
+									alert(response.data);
+								});
+						
+						 
 						
 					}
-					
+
 
 				}, function errorCallback(response) {
 					alert(response.data);
 				});
-				
-	
-
-
 
 	}
-	$scope.resgatarSessao(0);
+
 
 
 
@@ -190,52 +206,29 @@ app.controller("myController", function($scope, $http) {
 
 	}
 
-	$scope.criarNovaConta = function() {
-		var usuario = new Object();
+	$scope.logOff = function() {
 
+		$http({
+			method : 'GET',
+			url : '/sessaoDestruir'
 
-		if($scope.login_usuario.length == 14){
-			usuario.tipo="pj"; // pessoa fisica
+		}).then(function successCallback(response) {
 
-		}else{
+			if(response.date == null || response.date == "" ){
+				window.location.href = "LoginUsuario.html";
+			}
 
-			usuario.tipo="pf"; // pessoa jusridica
-		}
-
-
-		usuario.nomeUsuario=$scope.nomeUsuario;
-		usuario.login=$scope.login_usuario; 		
-		usuario.senha=$scope.senha_usuario;
-		usuario.telefone = new Object();
-		usuario.telefone.residencial = $scope.residencial;
-		usuario.telefone.celular=$scope.celular;
-		usuario.endereco = new Object();
-		usuario.endereco.estado=$scope.estado ;
-		usuario.endereco.cidade=$scope.cidade ;
-		usuario.endereco.cep=$scope.cep ;
-		usuario.endereco.complemento=$scope.complemento ;
-
-
-
-		$http.post("/adicionarUsuario", usuario,{
-			headers:{'content-Type':'application/json'}
-		//minetypes http pesquisar depois
-		})
-		.then(
-				function(response){
-					//$scope.listaContatos = response.data;
-					// retornar para a tela de login
-					window.location.href = "LoginUsuario.html";
-
-				}, function(response) {
-					alert(response.data);
-				});
+		}, function errorCallback(response) {
+			alert(response.data);
+		});
 
 	}
 
+
+	
 	$scope.editarDadosUsuario = function() {
 		$scope.resgatarSessao(5);
-		
+
 
 	}
 
@@ -245,7 +238,7 @@ app.controller("myController", function($scope, $http) {
 		if($scope.objUsuarioLogado !=null ||  $scope.objUsuarioLogado != ""  ){
 			usuario = $scope.objUsuarioLogado;
 
-			
+
 			usuario.nomeUsuario=$scope.nomeUsuarioEdit;
 			//usuario.login=$scope.login_usuario; 		
 			usuario.senha=$scope.senha_usuarioEdit;
@@ -267,7 +260,7 @@ app.controller("myController", function($scope, $http) {
 			.then(
 					function(response){
 						alert("Dados Alterados com Sucesso");
-						
+
 
 					}, function(response) {
 						alert(response.data);
@@ -279,34 +272,50 @@ app.controller("myController", function($scope, $http) {
 		}
 
 	}
+	
+	$scope.deletarConta = function() {
+
+
+		$scope.resgatarSessao(7);
+
+	}
+
 
 	$scope.compra = function() {
 
 
-			$scope.resgatarSessao(1);
-		
+		$scope.resgatarSessao(1);
+
 
 	}
 
 	$scope.venda = function() {
-		
 
-			$scope.resgatarSessao(2);
-		
+
+		$scope.resgatarSessao(2);
+
 	}
 
 	$scope.consulta = function() {
-		
 
-			$scope.resgatarSessao(3);
-		
+
+		$scope.resgatarSessao(3);
+
 	}
 	$scope.alterarDadosUsuario = function() {
-	
 
-			$scope.resgatarSessao(4);
-		
+
+		$scope.resgatarSessao(4);
+
 	}
+
+	$scope.paginaInicial = function() {
+
+
+		$scope.resgatarSessao(6);
+
+	}
+	
 
 
 

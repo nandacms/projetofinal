@@ -12,7 +12,7 @@ var options = {
 
 }
 
-mongoose.connect('mongodb://10.42.3.233/test', options);
+mongoose.connect('mongodb://localhost/test', options);
 
 
 app.use(bodyParser.json());
@@ -41,15 +41,22 @@ var produtoServiceInstance =
 //Chamar os metodos aqui em baixo
 
 //metodos da sessao
-app.get('/sessaoAdicionar/:id', function (req, res) {
-	///:login/:senha
-	req.session.usuario = {_id: req.params.id};
+app.get('/sessaoAdicionar/:id/:tipo', function (req, res) {
+	//:login/:senha
+	req.session.usuario = {_id: req.params.id, tipo: req.params.tipo};
 	//, login:req.params.login, senha:req.params.senha
 	
 	res.send(req.session.usuario);
 });
 
 app.get('/sessaoConsultar', function (req, res) {
+	res.send(req.session.usuario);
+});
+
+app.get('/sessaoDestruir', function (req, res) {
+	req.session.usuario = null;
+	//, login:req.params.login, senha:req.params.senha
+	
 	res.send(req.session.usuario);
 });
 

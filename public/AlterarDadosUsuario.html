@@ -4,9 +4,6 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="js/angular.min.js"></script>
-<script src="js/myApp.js"></script>
-<script src="js/myContrl.js"></script>
 
 <title>Projeto Sucatão</title>
 
@@ -29,146 +26,139 @@
 <body ng-controller="myController">
 
 	<div class="container-fluid">
-	   <div id="wrapper">
+
+		<div id="wrapper">
 			<div id="sidebar-wrapper">
 				<ul class="sidebar-nav">
-					<li class="sidebar-brand"><a href="#">  My Recycle </a></li>
-					<li><a href="Index.html">Home</a></li>
-					<li><a href="" ng-click="compra()">Compras</a></li>
-					<li><a href="" ng-click="venda()">Vendas</a></li>
-					<li><a href="" ng-click="consulta()">Consulte seu
-							histórico</a></li>
+					<li class="sidebar-brand"><a href="#"> My Recycle </a></li>
+					<li><a href="" ng-click="paginaInicial()">Pagina Inicial</a></li>
 					<li><a href="" ng-click="alterarDadosUsuario()">Alterar
 							Dados do Usuario</a></li>
+					<li><a href="" ng-click="logOff()"> Sair da Conta</a></li>
 				</ul>
 			</div>
-			<div id="page-content-wrapper">
-		<div class="row">
-			<div class="col-md-12">
-				<div class="page-header cabecalho">
-					<h1>
-						<img src="images/logo.jpg" alt="logo" title="logotipo" width="100"
-							align=left /> My Recycle
-					</h1>
+
+			<div class="row">
+				<div class="col-md-12">
+					<div class="page-header cabecalho">
+						<h1>
+							<img src="images/logo.jpg" alt="logo" title="logotipo" width="100"
+								align=left /> My Recycle
+						</h1>
+					</div>
 				</div>
 			</div>
-		</div>
-		<div class="row">
-		
-			
 			<div class="row">
-				<div class="col-md-12 centro" >
-				<h2 align="center"> Alterar Cadastro<br/>
-			_______________________________________________________</h2>
-			</div>
-			
-		<div class="col-md-2 lateral2">
-			
-			
-			</div>
-			<div class="col-md-8 centro">
+				<div class="col-md-2">
 
-					<form class="form-horizontal" role="form">
-						<div class="form-group">
 
-							<label for="nomeUsuario" class="col-sm-2 control-label">
-								Nome: </label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control" name="nomeUsuario"
-									ng-model="nomeUsuarioEdit" >
-							</div>
-						</div>
-						
-						<div class="form-group">
+				
+				</div>
+				<div class="row">
+					<div class="col-md-8 centro">
 
-							<label for="senha" class="col-sm-2 control-label"> Senha: </label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control" name="senha"
-									ng-model="senha_usuarioEdit">
-							</div>
-						</div>
-						<div class="form-group">
+						<form class="form-horizontal" role="form" name="myForm2">
+							<div class="form-group">
 
-							<label for="estado" class="col-sm-2 control-label">
-								Estado: </label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control" name="estado"
-									ng-model="estadoEdit">
-							</div>
-						</div>
-						<div class="form-group">
-
-							<label for="cidade" class="col-sm-2 control-label">
-								Cidade: </label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control" name="cidade"
-									ng-model="cidadeEdit">
-							</div>
-						</div>
-						<div class="form-group">
-
-							<label for="complemento" class="col-sm-2 control-label">
-								Complemento: </label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control" name="complemento"
-									ng-model="complementoEdit">
-							</div>
-						</div>
-						<div class="form-group">
-
-							<label for="cep" class="col-sm-2 control-label"> CEP: </label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control" name="cep"
-									ng-model="cepEdit">
-							</div>
-						</div>
-						<div class="form-group">
-
-							<label for="residencial" class="col-sm-2 control-label">
-								Telefone Residencial: </label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control" name="residencial"
-									ng-model="residencialEdit">
-							</div>
-						</div>
-						<div class="form-group">
-
-							<label for="celular" class="col-sm-2 control-label">
-								Telefone Celular: </label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control" name="celular"
-									ng-model="celularEdit">
+								<label for="nomeUsuario" class="col-sm-2 control-label">
+									Nome: </label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control" name="nomeUsuario"
+										ng-model="nomeUsuarioEdit" required>
+								</div>
 							</div>
 
-						</div>
+							<div class="form-group">
 
-						<input align="center" type="button" value="Alterar"
-							ng-click="concluirEdicaoDadosUsuario()"  />
-							<input align="center" type="button" value="habilitarEdicao"
-							ng-click="editarDadosUsuario(5)" />
-					</form>
+								<label for="senha" class="col-sm-2 control-label">
+									Senha: </label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control" name="senha"
+										ng-model="senha_usuarioEdit" required>
+								</div>
+							</div>
+							<div class="form-group">
+
+								<label for="estado" class="col-sm-2 control-label">
+									Estado: </label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control" name="estado"
+										ng-model="estadoEdit" required>
+								</div>
+							</div>
+							<div class="form-group">
+
+								<label for="cidade" class="col-sm-2 control-label">
+									Cidade: </label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control" name="cidade"
+										ng-model="cidadeEdit" required>
+								</div>
+							</div>
+							<div class="form-group">
+
+								<label for="complemento" class="col-sm-2 control-label">
+									Complemento: </label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control" name="complemento"
+										ng-model="complementoEdit" required>
+								</div>
+							</div>
+							<div class="form-group">
+
+								<label for="cep" class="col-sm-2 control-label"> CEP: </label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control" name="cep"
+										ng-model="cepEdit" required>
+								</div>
+							</div>
+							<div class="form-group">
+
+								<label for="residencial" class="col-sm-2 control-label">
+									Telefone Residencial: </label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control" name="residencial"
+										ng-model="residencialEdit" required>
+								</div>
+							</div>
+							<div class="form-group">
+
+								<label for="celular" class="col-sm-2 control-label">
+									Telefone Celular: </label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control" name="celular"
+										ng-model="celularEdit" required>
+								</div>
+
+							</div>
+
+							<input align="center" type="button" value="Alterar" ng-disabled="myForm2.$invalid"
+								ng-click="concluirEdicaoDadosUsuario()"  />
+								 <input	align="center" type="button" value="Habilitar Edicao"
+								ng-click="editarDadosUsuario(5)" />
+									 <input	align="center" type="button" value="Excluir Conta"
+								ng-click="deletarConta()" />
+						</form>
+
+					</div>
+
+
 
 				</div>
-
-
-
-			</div>
-			<div class="row">
-				<div class="col-md-12 rodape2 " align="center">
-					<h5>
-						<address>
-						_________________________________________________________________________________________
-						<br/>
-							<strong><em>My Recycle </strong><br> Av. Recife-600<br>
-							Recife-PE<br> <abbr title="Phone">Telefone:</abbr>
-							(81)3456-7890 </em>
-						</address>
-					</h5>
+				<div class="row">
+					<div class="col-md-12 rodape2 " align="center">
+						<h5>
+							<address>
+								<strong><em>My Recycle </strong><br> Av. Recife-600<br>
+								Recife-PE<br> <abbr title="Phone">Telefone:</abbr>
+								(81)3456-7890 </em>
+							</address>
+						</h5>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 
