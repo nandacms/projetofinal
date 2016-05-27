@@ -1,7 +1,7 @@
-app.controller("myController", function($scope, $http) {
+app.controller("myControllerLogado", function($scope, $http) {
 
 	// Codigo do controlador aqui
-
+	
 
 	$scope.listarTodosUsuarios = function() {
 		// pode receber parametros que nem o deletar
@@ -105,7 +105,7 @@ app.controller("myController", function($scope, $http) {
 						//redirecionar para a pagina do usuario
 						$scope.resgatarSessao(0);
 						if(usuario.tipo == "pf" ||  usuario.tipo == "pj"){
-							window.location.href = "Inicial.html";
+						window.location.href = "Inicial.html";
 						}else{
 							window.location.href = "InicialAdmin.html";
 						}
@@ -132,7 +132,7 @@ app.controller("myController", function($scope, $http) {
 
 					$scope.sessaoUsuario = response.data;
 					$scope.verificarStatusLogin();
-				
+					//$scope.listarUsuarioId();
 					if(tela == 1){
 						if($scope.sessaoUsuario ==null){
 							window.location.href = "LoginUsuario.html";
@@ -168,14 +168,14 @@ app.controller("myController", function($scope, $http) {
 						$scope.listarUsuarioId();
 
 					}else if(tela == 6){
-
+												 
 						if($scope.sessaoUsuario.tipo == "pf" || $scope.sessaoUsuario.tipo == "pj"  ){
-							window.location.href = "Inicial.html";
+						window.location.href = "Inicial.html";
 						} else{
 							window.location.href = "InicialAdmin.html";
 						}
 					}else if(tela == 7){
-
+						
 						$http.delete("/deletarUsuario/"+$scope.sessaoUsuario._id)
 
 						.then(
@@ -185,21 +185,9 @@ app.controller("myController", function($scope, $http) {
 								}, function(response){
 									alert(response.data);
 								});
-
-
-
-					}else if(tela == 0){
-
-						if($scope.sessaoUsuario._id != null || $scope.sessaoUsuario._id != "" ){
-
-							if($scope.sessaoUsuario.tipo == "pf" || $scope.sessaoUsuario.tipo == "pj"  ){
-								window.location.href = "Inicial.html";
-							} else if ($scope.sessaoUsuario.tipo == "adm"){
-								window.location.href = "InicialAdmin.html";
-							}
-						}
-
-
+						
+						 
+						
 					}
 
 
@@ -237,7 +225,7 @@ app.controller("myController", function($scope, $http) {
 	}
 
 
-
+	
 	$scope.editarDadosUsuario = function() {
 		$scope.resgatarSessao(5);
 
@@ -284,7 +272,7 @@ app.controller("myController", function($scope, $http) {
 		}
 
 	}
-
+	
 	$scope.deletarConta = function() {
 
 
@@ -337,7 +325,7 @@ app.controller("myController", function($scope, $http) {
 		$scope.resgatarSessao(6);
 
 	}
-
+	
 
 
 
